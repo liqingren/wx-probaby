@@ -1,0 +1,6 @@
+<!-- 表情包组件 {{height}} -->
+<view class="emoji" style="height:{{height}}rpx;">
+  <view class="emoji-item" wx:for="{{emoji}}" wx:key="index">
+    <view data-index="{{index}}" bindtap="clickEmoji">{{item.emoji}}</view>
+  </view>
+</view>

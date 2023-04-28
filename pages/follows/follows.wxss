@@ -1,0 +1,52 @@
+/* pages/follows/follows.wxss */
+page{
+  margin:20rpx;
+}
+.user-info{
+  height:120rpx;
+}
+.user-info image{
+  width:90rpx;
+  height:90rpx;
+  border-radius: 50%;
+  margin-top:10rpx;
+}
+.user-info view{
+  position: relative;
+  top:-94rpx;
+  left:14%;
+}
+.user-info .follow{
+  float: right;
+  margin-right: 150rpx;
+  margin-top:-30rpx;
+  width:20%;
+  height:46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  color: #aeaeae;
+  font-size: 30rpx;
+  position: relative;
+  z-index:999;
+}
+.user-city view{
+  position: relative;
+  top:5rpx;
+  left:0;
+  color: #aeaeae;
+  font-size: 30rpx;
+}
+.user-sex image{
+  width:36rpx;
+  height:36rpx;
+  position: relative;
+  top:50rpx;
+  margin-left:60rpx;
+}
+.hr{
+  width:96%;
+  border:1rpx solid #ececec;
+  border-style: solid none none none;
+  margin-bottom: 10rpx;
+}

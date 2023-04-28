@@ -1,0 +1,98 @@
+<!--pages/babyinfo/babyinfo.wxml-->
+<view class="content">
+   <!-- 背景图 -->
+   <view class="img">
+    <image src="/pages/index/image/bg.jpg" style="width:100%;height:160px;"></image>
+  </view>
+
+
+
+  <!-- 头像 -->
+  <view class="head"  bindtap="upload">
+    <image wx:if="{{baby.babyPhoto === null}}" src="/image/default.jpg"></image>
+    <image wx:else src="{{baby.babyPhoto}}"></image>
+    <text>{{age}}</text>
+  </view>
+
+  <!-- 编辑信息 -->
+  <view class="info">
+    <!-- 用户名 -->
+    <view class="detail">
+      <view>
+        <text>小名</text>
+        <input type="text" value="{{baby.nickname}}" placeholder="请输入" bindinput="nicknameInput" />
+        <text class="delimiter">></text>
+      </view>
+    </view>
+
+    <!-- 性别 -->
+    <view class="detail">
+      <picker class="section_picker" bindchange="bindSexChange" value="{{baby.babySex}}" range="{{array}}">
+        <text>性别</text>
+        <text class="picker_sex" wx:if="{{baby.babySex === null}}">未填写</text>
+        <text class="picker_sex" wx:elif="{{baby.babySex === true}}" style="left:64%">男</text>
+        <text class="picker_sex" wx:elif="{{baby.babySex === false}}" style="left:64%">女</text>
+        <text class="delimiter">></text>
+      </picker>
+    </view>
+
+    <!-- 生日 -->
+  <view class="detail">
+    <picker mode="date" class="section_picker" bindchange="bindDateChange" value="{{birth}}">
+      <text>生日</text>
+      <text class="picker_birth" wx:if="{{birth === null}}" style="left:53%">未填写</text>
+      <text class="picker_birth" wx:else>{{birth}}</text>
+      <text class="delimiter">></text>
+    </picker>
+  </view>
+
+
+    <!-- 血型 -->
+    <view class="detail">
+      <picker class="section_picker" bindchange="bindBloodChange" value="{{index}}" range="{{blood}}">
+        <text>血型</text>
+        <text class="picker_blood" wx:if="{{baby.babyBlood === null}}">未填写</text>
+        <text class="picker_blood" wx:else style="left:60%">{{baby.babyBlood}}</text>
+        <text class="delimiter">></text>
+      </picker>
+    </view>
+
+     <!-- 出生时刻 -->
+  <view class="detail">
+    <picker mode="time" class="section_picker" bindchange="bindTimeChange" value="{{moment}}">
+      <text>出生时刻</text>
+      <text class="picker_moment" wx:if="{{moment === null}}" style="left:41%">未填写</text>
+      <text class="picker_moment" wx:else>{{moment}}</text>
+      <text class="delimiter">></text>
+    </picker>
+  </view>
+
+    <!-- 身高体重 -->
+    <view class="info-detail" bindtap="navigateRecord">
+      <view>
+        <text>身高</text>
+        <text wx:if="{{baby.height === null}}" style="color:#aeaeae;margin-left:80rpx;font-size:36rpx;">未填写</text>
+        <text wx:else style="color:#aeaeae;margin-left:40rpx;font-size:34rpx;">{{baby.height}}cm</text>
+      </view>
+      <view>
+        <text>体重</text>
+        <text wx:if="{{baby.weight === null}}" style="color:#aeaeae;margin-left:80rpx;font-size:34rpx;">未填写</text>
+        <text wx:else style="color:#aeaeae;margin-left:50rpx;font-size:36rpx;">{{baby.weight}}kg</text>
+        
+      </view>
+      <view style="float:right;color:#aeaeae;font-size: 50rpx;position: relative;left:11%;">
+        <text>></text>
+      </view>
+      
+    </view>
+
+
+    <!-- 退出登录 -->
+  <view class="save" bindtap="handleSaveInfo">
+    <view>保存</view>
+    
+  </view>
+
+
+  </view>
+</view>

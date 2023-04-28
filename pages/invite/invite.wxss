@@ -1,0 +1,33 @@
+/* pages/invite/invite.wxss */
+page{
+  margin-top:20rpx;
+  background-color: #f2f2f2;
+}
+
+.invite .save{
+  width:90%;
+  height:100rpx;
+  line-height: 100rpx;
+  position: fixed;
+  bottom:0;
+  left:5%;
+  text-align: center;
+  color: #3f4974;
+  display: flex;
+}
+.save view{
+  width:50%;
+  height:40rpx;
+  line-height:40rpx;
+  font-size:32rpx;
+}
+.save button{
+  width:50%;
+  height:50rpx;
+  line-height:10rpx;
+  font-weight: normal;
+  background-color: #f2f2f2;
+  border: none;
+  font-size:32rpx;
+  color: #3f4974;
+}

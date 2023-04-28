@@ -1,0 +1,21 @@
+/* pages/retrieve/retrieve.wxss */
+.retrieve{
+  margin-top:100rpx;
+}
+.username{
+  display:flex;
+  flex-direction: row;
+  padding:40rpx 0 30rpx 40rpx;
+  width:100%;
+}
+.title{
+  width:180rpx;
+  text-align: right;
+  font-size: 34rpx;
+}
+.hr{
+  border:2rpx solid #cccccc;
+  width:90%;
+  margin:0 auto;
+  opacity: 0.2;
+}

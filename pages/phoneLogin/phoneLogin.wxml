@@ -1,0 +1,46 @@
+<!--pages/phoneLogin/phoneLogin.wxml-->
+<view class="content">
+  <!-- 账号 -->
+  <view class="username">
+    <view class="title">账号：</view>
+    <view class="userid">
+      <input type="number" model:value="{{phone}}" maxlength="11" bindinput="phoneInput" placeholder="请输入手机号"/>
+    </view>
+  </view>
+  
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+
+  <!-- 密码 -->
+  <view class="username">
+    <view class="title">密码：</view>
+    <view class="userid">
+      <input type="text" password="{{!open}}" model:value="{{password}}" bindinput="passwordInput" placeholder="请输入密码"/>
+    </view>
+    <image src="../register/image/no_eye.gif" wx:if="{{!open}}" style="width:34px;height:22px;" bindtap="showPass"></image>
+    <image src="../register/image/eye.gif" wx:else style="width:34px;height:22px;" bindtap="showPass"></image>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+
+  <!-- 登录按钮 -->
+  <button  disabled="{{loginBtnState}}" class="loginBtn" bindtap="login"
+  style="background-color: #ff9933;width:86%;margin-top:40rpx;color:white">登录</button>
+
+  <!-- 其他方式登录导航 -->
+  <view class="miniLogin">
+    <view>
+      <navigator open-type="navigateBack">微信登录</navigator>
+    </view>
+    <view>
+      <navigator open-type="navigate" url="../register/register">手机号快速注册</navigator>
+    </view>
+    <view>
+      <navigator url="../retrieve/retrieve" hover-class="none">找回密码</navigator>
+      <!-- 找回密码 -->
+    </view>
+  </view>
+</view>

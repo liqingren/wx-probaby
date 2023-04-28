@@ -1,0 +1,53 @@
+/* pages/invitation/invitation.wxss */
+page{
+  margin-top:20rpx;
+}
+.next{
+  height:100rpx;
+ 
+}
+.next .btn{
+  width:200rpx;
+  height:70rpx;
+  line-height: 40rpx;
+  position: relative;
+  top:10rpx;
+  left:25%;
+  font-weight: normal;
+  color: white;
+  background-color: #ff9900;
+  border-radius:40rpx;
+  font-size: 32rpx;
+
+}
+.baby-info{
+  height:70rpx;
+  width:96%;
+  text-align: center;
+  font-size: 42rpx;
+}
+.relative{
+  text-align: center;
+  padding-bottom: 40rpx;
+}
+.relative .item{
+  width:36%;
+  height:90rpx;
+  line-height:90rpx;
+  background-color: #f2f2f2;
+  display: inline-block;
+  margin:20rpx;
+  text-align: center;
+  
+}
+.relative .active{
+  width:36%;
+  height:90rpx;
+  line-height:90rpx;
+  display: inline-block;
+  margin:20rpx;
+  text-align: center;
+  border:1rpx #f0c27e solid;
+  background-color: #f8ead6;
+  color: #ff9900;
+}

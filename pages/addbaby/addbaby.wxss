@@ -1,0 +1,106 @@
+/* pages/addbaby/addbaby.wxss */
+.content{
+  margin-top:40rpx;
+}
+.sex{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height:180rpx;
+}
+.sex view{
+  width:140rpx;
+  height:140rpx;
+  line-height: 140rpx;
+  margin-left:140rpx;
+  border-radius: 50%;
+  color: white;
+  background-color: #cfcfcf;
+}
+.sex view.active{
+  border:1px #ff9900 solid;
+  background-color: #fcdeb2;
+  color: #ff9900;
+}
+.birth{
+  margin-left:40rpx;
+  height:200rpx;
+}
+.picker_birth{
+  width:86%;
+  height:100rpx;
+  line-height: 100rpx;
+  background-color: #f2f2f2;
+  opacity: 0.6;
+  border-radius: 10rpx;
+}
+.picker_birth .delimiter{
+  color:#aeaeae;
+  position: absolute;
+  left:78%;
+  font-size:50rpx;
+}
+.nickname{
+  margin-left:40rpx;
+  height:200rpx;
+}
+
+.relative{
+  margin-left: 40rpx;
+}
+.nick_content{
+  width:86%;
+  height:100rpx;
+  background-color: #f2f2f2;
+  opacity: 0.6;
+  border-radius: 10rpx;
+}
+.nick_content input{
+  width:86%;
+  height:100rpx;
+  margin-left:40rpx;
+}
+.nick_content text{
+  position: relative;
+  left:89%;
+  top:-86rpx;
+  font-size:50rpx;
+  color:#aeaeae;
+}
+.relative{
+  width:90%;
+}
+.relate{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.relate view{
+  width:28%;
+  height:90rpx;
+  line-height:90rpx;
+  margin-right:30rpx;
+  font-size:40rpx;
+  background-color: #f2f2f2;
+  border-radius: 50rpx;
+}
+.relate view.active{
+  border:1px #ff9900 solid;
+  background-color: #fcdeb2;
+  color: #ff9900;
+}
+
+.add{
+  width:86%;
+  height:100rpx;
+  margin:60rpx 0 0 40rpx;
+}
+.add button{
+  background-color: #ff9900;
+  border-radius: 40rpx;
+  color:white;
+}
+
+.test button.active{
+  background-color: red;  
+}

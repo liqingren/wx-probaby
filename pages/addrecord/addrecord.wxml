@@ -1,0 +1,40 @@
+<!--pages/addrecord/addrecord.wxml-->
+<view class="content">
+  <view class="record">
+    <!-- 身高 -->
+    <view class="detail">
+      <text>身高</text>
+      <input type="text" value="{{record.height}}" placeholder="请输入身高" bindinput="heightInput" />
+      <text>cm</text>
+    </view>
+
+    <!-- 体重 -->
+    <view class="detail">
+      <text>体重</text>
+      <input type="text" value="{{record.weight}}" placeholder="请输入体重" bindinput="weightInput" />
+      <text>kg</text>
+    </view>
+
+    <!-- 头围 -->
+    <view class="detail">
+      <text>头围</text>
+      <input type="text" value="{{record.head}}" placeholder="请输入头围" bindinput="headInput" />
+      <text>cm</text>
+    </view>
+
+    <!-- 日期 -->
+    <view class="record-time">
+      <picker mode="date" class="section_picker" bindchange="bindDateChange" value="{{date}}">
+      <text>日期</text>
+      <text class="picker_date">{{date}}</text>
+    </picker>
+    </view>
+
+    <!-- 保存 -->
+    <view class="save">
+      <button  bindtap="handleSaveRecord" disabled="{{disableBtnRecord}}">保存</button>
+      
+    </view>    
+
+  </view>
+</view>

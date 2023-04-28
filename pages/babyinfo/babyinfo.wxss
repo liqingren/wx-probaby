@@ -1,0 +1,107 @@
+/* pages/babyinfo/babyinfo.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.head{
+  position: relative;
+  top:-200rpx;
+  left:40rpx;
+  width:100%;
+}
+.head image{
+  width:120rpx;
+  height:120rpx;
+  border-radius: 50%;
+}
+.head text{
+  position: relative;
+  top:-50rpx;
+  left:40rpx;
+  color:white;
+}
+.info{
+  margin-top:-130rpx;
+}
+.detail{
+  width:100%;
+  height:100rpx;
+  background-color: white;
+  margin-bottom: 2rpx;
+}
+.detail text{
+  line-height:100rpx;
+  margin-left:30rpx;
+  font-size: 44rpx;
+}
+.detail input{
+  float:right;
+  font-size: 40rpx;
+  position: relative;
+  top:24rpx;
+  right:90rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+.detail .delimiter{
+  color:#aeaeae;
+  position: absolute;
+  left:88%;
+  font-size:50rpx;
+}
+.picker_sex{
+  position: relative;
+  left:54%;
+  font-size: 40rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+.picker_birth{
+  position: relative;
+  left:38%;
+  font-size: 40rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+.picker_blood{
+  position: relative;
+  left:53%;
+  font-size: 40rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+.picker_moment{
+  position: relative;
+  left:44%;
+  font-size: 40rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+.save{
+  width:100%;
+  height:100rpx;
+  font-size: 44rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color:#ff9900;
+  background-color: white;
+}
+.info-detail{
+  width:100%;
+  height:100rpx;
+  background-color: white;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.info-detail view{
+  line-height:100rpx;
+  margin-left:30rpx;
+  font-size: 44rpx;
+}
+.info-detail .delimiter{
+  color:#aeaeae;
+  position: relative;
+  top:20rpx;
+  left:6%;
+  font-size:50rpx;
+}

@@ -1,0 +1,23 @@
+/* pages/invited/invited.wxss */
+page{
+  margin-top:20rpx;
+}
+.invited .item{
+  margin-top: 80rpx;
+  text-align: center;
+}
+.invited .item image{
+  width:140rpx;
+  height:140rpx;
+  border-radius: 50%;
+}
+.invited .enter{
+  height:100rpx;
+  margin-top:60rpx;
+}
+.enter .btn{
+  background-color: #ff9900;
+  font-weight: normal;
+  color: white;
+  border-radius: 40rpx;
+}

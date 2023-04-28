@@ -1,0 +1,162 @@
+/* pages/edittrend/edittrend.wxss */
+
+.content{
+  margin:20rpx 20rpx 0 20rpx;
+}
+/* 上传视频或照片 */
+.media{
+  width: 90%;
+  margin-left:40rpx;
+  margin-bottom: 40rpx;
+  margin-top:20rpx;
+}
+.media video{
+  width:100%;
+}
+.media image{
+  width:180rpx;
+  height:180rpx;
+  margin:10rpx 20rpx 20rpx 20rpx;
+  position: relative;
+
+}
+.media text{
+  position: relative;
+  left:20rpx;
+  color:#aeaeae;
+  margin-bottom: 20rpx;
+}
+
+/* 标签 */
+.show-item{
+  height:60rpx;
+  line-height: 60rpx;
+  background-color: #f5f5f5;
+  border-radius: 40rpx;
+  margin-left: 60rpx;
+  margin-bottom: 20rpx;
+}
+.show-item text{
+  margin-left:30rpx;
+}
+.show-item image{
+  width:40rpx;
+  height:40rpx;
+  position: relative;
+  left:20rpx;
+  top:6rpx;
+}
+.tag-item{
+  width:22%;
+  height:60rpx;
+  line-height: 60rpx;
+  background-color: #f5f5f5;
+  border-radius: 40rpx;
+  margin-bottom: 20rpx;
+  margin-left:60rpx;
+}
+.tag-item image{
+  width:40rpx;
+  height:40rpx;
+  position: relative;
+  top:8rpx; 
+   left:20rpx;
+}
+.tag-item text{
+  margin-left:26rpx;
+  color:#aeaeae;
+}
+
+/* 谁可以看 */
+.permission{
+  width:90%;
+  height:100rpx;
+  margin:0 auto;
+  border:1rpx solid #ececec;
+  border-style: none none solid none;
+
+}
+.permission image{
+  width:60rpx;
+  height:60rpx;
+  position: relative;
+  top:16rpx;
+}
+.permission text{
+  line-height:100rpx;
+  margin-left:10rpx;
+  font-size: 44rpx;
+}
+.permission .delimiter{
+  color:#aeaeae;
+  position: absolute;
+  left:88%;
+  font-size:50rpx;
+}
+.picker_permiss{
+  position: relative;
+  left:34%;
+  font-size: 40rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+/* 记录时间 */
+.datetime{
+  width:90%;
+  height:100rpx;
+  margin-bottom: 2rpx;
+  margin:0 auto;
+  border:1rpx solid #ececec;
+  border-style: none none solid none;
+
+}
+.datetime image{
+  width:54rpx;
+  height:54rpx;
+  position: relative;
+  top:10rpx;
+  left:6rpx;
+}
+.datetime text{
+  line-height:100rpx;
+  margin-left:16rpx;
+  font-size: 44rpx;
+}
+.datetime .delimiter{
+  color:#aeaeae;
+  position: absolute;
+  left:88%;
+  font-size:50rpx;
+}
+.picker_date{
+  position: relative;
+  left:18%;
+  font-size: 40rpx;
+  text-align: right;
+  color:#aeaeae;
+}
+
+/* 保存或取消 */
+.save{
+  width:90%;
+  height:100rpx;
+  margin:0 auto;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top:100rpx;
+}
+.save .exit{
+  background-color: white;
+  width:30%;
+  font-size: 44rpx;
+  font-weight: normal;
+  border-radius: 40rpx;
+}
+.save .btn-save{
+  background-color: #ff9900;
+  color:white;
+  font-weight: normal;
+  font-size: 44rpx;
+  border-radius: 80rpx;
+}

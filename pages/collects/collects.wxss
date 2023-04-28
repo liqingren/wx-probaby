@@ -1,0 +1,68 @@
+/* pages/collects/collects.wxss */
+page{
+  margin:20rpx;
+}
+.user-info{
+  display: flex;
+  flex-direction: row;
+}
+.user-info image{
+  width:90rpx;
+  height:90rpx;
+  border-radius: 50%;
+  margin-top:10rpx;
+}
+.user-info view{
+  margin-top:5rpx;
+  margin-left: 20rpx;
+}
+.user-info text{
+  position: absolute;
+  left:17%;
+  margin-top:48rpx;
+  color:#aeaeae;
+  font-size: 30rpx;
+
+}
+.user-info .follow{
+  width:12%;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border:1rpx solid #aeaeae;
+  border-radius: 40rpx;
+  color: #aeaeae;
+  position: absolute;
+  left:82%;
+  font-size: 28rpx;
+}
+.user-info .followed{
+  width:16%;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #aeaeae;
+  position: absolute;
+  left:78%;
+  font-size: 28rpx;
+}
+.cont view{
+  width:78%;
+  position: relative;
+  top:0;
+  left:15%;
+  margin-bottom: 20rpx;
+}
+.cont-item rich-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.hr{
+  width:96%;
+  border:1rpx solid #ececec;
+  border-style: solid none none none;
+  margin-bottom: 10rpx;
+}

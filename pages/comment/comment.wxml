@@ -1,0 +1,34 @@
+<!--pages/comment/comment.wxml -->
+  <!-- 写评论 -->
+<view class="comment">
+  <view style="width: 90%;margin-bottom: 20rpx;">
+    <textarea id="comment-text" placeholder="{{placeholder}}" auto-height="true" focus="{{releaseFocus}}" maxlength="-1" bindinput="onCommentInput" value="{{comment.content}}" hold-keyboard="true"  style="padding:10rpx 0 10rpx 0;"/>
+  </view>
+
+
+  <!-- 表情包和照片-->
+  <view class="other" style="margin-bottom: {{keywordHeight}}rpx;">
+    <!-- 点击非操作框界面可隐藏 -->
+    <view class="other_screen" bindtap="hideOther"></view>
+    <view bindtap="clickShowEmoji" style="position: relative;z-index: 2000;">
+      <image wx:if="{{!showEmoji}}" class="emoji" src="../trends/images/emji.jpg"/>
+      <image wx:if="{{showEmoji}}" class="emoji" src="../trends/images/keyword.jpg"/>
+    </view>
+    <view style="position: relative;z-index: 2000;">
+      <image src="/image/media.png" bindtap="clickMedia"/>
+    </view>
+    <view style="position: relative;z-index: 2000;">
+      <button style="width:180rpx;"  bindtap="saveComment">保存</button>
+    </view>
+  </view>
+
+  <!-- 表情包 -->
+  <view class="emoji" wx:if="{{showEmoji}}" style="position: relative;z-index:1000;">
+    <!-- 点击非表情包界面可隐藏 -->
+    <view class="emoji_screen" bindtap="hideEmoji"></view>
+
+    <emoji bind:emojiEvent="clickChooseEmoji" height="{{keywordHeight}}"></emoji>
+
+    
+  </view>
+</view>

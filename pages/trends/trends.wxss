@@ -1,0 +1,196 @@
+/* pages/trends/trends.wxss */
+page{
+  width:96%;
+}
+.trend-detail{
+  margin-top:40rpx;
+  margin-left: 40rpx;
+  padding-bottom: 200rpx;
+}
+/* 日期和年龄 */
+.info{
+  height:70rpx;
+}
+
+/* 图片视频 */
+.img image{
+  width:94%;
+}
+.content{
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+  margin-right: 40rpx;
+}
+
+.identity{
+  color: #aeaeae;
+  font-size: 30rpx;
+}
+.tag{
+  margin-bottom: 20rpx;
+  color: #aeaeae;
+}
+.hr{
+  width:100%;
+  border:1rpx solid #ececec;
+  border-style: solid none none none;
+  margin-top:20rpx;
+  margin-left:-20rpx;
+}
+
+.discuss{
+  width:100%;
+  display: flex;
+  margin-top:60rpx;
+  margin-left: -10rpx;
+  padding-left:10rpx ;
+  background-color: #f2f2f2;
+  border-radius: 10rpx;
+}
+.discuss image{
+  width:40rpx;
+  height:40rpx;
+  margin-right:10rpx;
+  margin-top:13rpx;
+}
+/* 表情包 */
+.emoji_screen{
+  width: 100%;
+  height: 46%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 10;
+}
+/*整体样式，就是黑色的容器*/
+.comment{
+  display: flex;
+  align-items: flex-end; 
+  justify-content: space-between; 
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 8px 0 8px 13px;
+  background-color: #ffffff;
+  font-size: 14px;
+  z-index: 2000;
+  border:1rpx solid #ececec;
+  border-style: solid none none none;
+}
+/**第一个红色的容器
+ *大概想法就是给flex-direction赋一个colomn的值，并列放置
+ */
+.comment.left{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index:2000;
+}
+/*输入框*/
+.comment .text{
+  width: 420rpx;
+  min-height: 17px;
+  max-height: 51px; /*最多显示三行*/
+  line-height: 17px;
+  font-size: 14px;
+  margin-bottom: 4px;
+  margin-left: 20rpx;
+}
+/*线*/
+.comment .line{
+margin-bottom: 0 ;
+margin-left:20rpx;
+width: 420rpx;
+height: 1rpx;
+background-color: #4B5CD7;
+}
+/*表情图标*/
+.emoji{
+  width: 50rpx;
+  height: 50rpx;
+}
+/*发送按钮*/
+.comment .submit{ 
+  width: 23%;
+  height:70rpx;
+  line-height: 70rpx;
+  margin-left:10rpx; 
+  margin-top:10rpx;
+  margin-right: 40rpx;
+  background-color: #ff9900;
+  text-align: center;
+  color:white;
+  border-radius: 10rpx;
+  position: relative;
+  z-index:999;
+}
+
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+/*对话框 */
+.commodity_attr_box {
+  height: 24%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.commodity_attr_box .title{
+  text-align: center;
+}
+.commodity_attr_box .item{
+  display: flex;
+  flex-direction: row;
+  margin-left:40rpx;
+  margin-top:50rpx;
+}
+.commodity_attr_box .item view{
+  width:130rpx;
+  height:100rpx;
+  margin-right:20rpx;
+}
+.commodity_attr_box .item image{
+  width:50rpx;
+  height:50rpx;
+  margin-right:20rpx;
+}
+.commodity_attr_box .item text{
+  position: relative;
+  top:30rpx;
+  left:-70rpx;
+  font-size: 30rpx;
+}
+
+.commodity_attr_box .exit{
+  width:100%;
+  height:80rpx;
+  line-height: 80rpx;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  color: #aeaeae;
+  font-size: 40rpx;
+  border:1rpx solid #aeaeae;
+  border-style:solid none none none;
+
+}
+
+

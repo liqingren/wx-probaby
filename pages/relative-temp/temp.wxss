@@ -1,0 +1,10 @@
+
+.hr{
+  border:1rpx solid #f5f5f5;
+  border-style:solid none none none;
+}
+.rela-item{
+  height:80rpx;
+  line-height:80rpx;
+  margin-left:30rpx;
+}

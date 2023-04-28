@@ -1,0 +1,40 @@
+<!--pages/likes/likes.wxml-->
+<!-- 点赞 -->
+<view class="likes">
+  <view  wx:for="{{trends}}" wx:key="index" bindtap="clickDetail" data-followed="{{item.followed}}" data-trendId="{{item.trendId}}"> 
+    <!-- 用户头像昵称、上传时间 -->
+    <view class="user-info">
+      <!-- 头像昵称 -->
+      <image wx:if="{{item.userPhoto != null}}" src="{{item.userPhoto}}"/>
+      <image wx:else src="../my/image/default.png"></image>
+      <view>{{item.username}}</view>
+      <text>{{item.createTime}}</text>
+      
+    </view>
+
+    <!-- 动态信息：内容或者照片 -->
+    <view class="cont">
+       <!-- content -->
+       <view class="cont-item"  wx:if ="{{item.trendContent != '' && item.trendContent != null}}" data-index="{{index}}"  bindtap="clickDeatil">
+        <rich-text nodes="{{item.trendContent}}"/>
+      </view>
+
+      <view class="media" wx:elif="{{item.trendPhoto != '' && item.trendPhoto != null}}">
+        [图片]
+      </view>
+
+      <view class="media" wx:elif="{{item.trendVideo != '' && item.trendVideo != null}}">
+        [视频]
+      </view>
+    </view>
+
+    <!-- 分割线 -->
+    <view class="hr">
+      
+    </view>
+
+  </view>
+  
+
+
+</view>

@@ -1,0 +1,78 @@
+<!--pages/my/my.wxml-->
+<view class="content">
+  <!-- 个人信息 -->
+  <view class="userInfo" bindtap="handleUserInfo">
+    <view class="img">
+      <image src="../my/image/default.png" wx:if="{{user.userPhoto ===null}}"></image>
+      <image src="{{user.userPhoto}}" wx:else class="myImage"></image>
+    </view>
+    
+    <view class="username">
+      <text>{{user.username}}</text>
+      <text style="position: absolute;left:470rpx;color:#aeaeae">></text>
+    </view>
+
+  </view>
+
+
+  <!-- 点赞收藏 -->
+  <view class="collect">
+    <view class="count">
+      <navigator wx:if="{{likes.length>0}}" hover-class="none" url="../likes/likes">{{likes.length}}</navigator>
+      <view wx:else>0</view>
+      <navigator wx:if="{{collects.length>0}}" hover-class="none" url="../collects/collects">{{collects.length}}</navigator>
+      <view wx:else>0</view>
+      <navigator wx:if="{{follows.length>0}}" hover-class="none" url="../follows/follows">{{follows.length}}</navigator>
+      <view wx:else>0</view>
+    </view>
+   
+    <view class="desc">
+      <navigator hover-class="none" url="../likes/likes">点赞</navigator>
+      <navigator hover-class="none" url="../collects/collects">收藏</navigator>
+      <navigator hover-class="none" url="../follows/follows">关注</navigator>
+     
+    </view>
+    
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">
+    
+  </view>
+
+  <!-- 添加宝宝 -->
+  <view class="baby" bindtap="handleBabyInfo">
+    <view class="save">
+    <image src="/image/addbaby.jpg" class="baby-img"></image>
+      <text style="margin-right:406rpx;">添加宝宝</text>
+      <text style="color:#aeaeae">></text>
+    </view>
+  </view>
+
+
+  <!-- 扫一扫 -->
+  <view class="scan" bindtap="scanCode">
+    <view class="scan-item">
+      <image src="../my/image/scan.jpg" ></image>
+      <text style="margin-right: 450rpx;">扫一扫</text>
+      <text style="color:#aeaeae">></text>
+    </view>
+  </view>
+
+   <!-- 分割线 -->
+   <view class="hr">
+      
+    </view>
+
+  <!-- 退出登录 -->
+  <view class="exit" bindtap="loginout">
+    <view>退出登录</view>
+    
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">
+      
+    </view>
+
+</view>

@@ -1,0 +1,34 @@
+<!-- 亲友的评论 -->
+<view class="discuss-content">
+  <view wx:for="{{discussArr}}" wx:key="index">
+    <view class="discuss" data-index="{{index}}" data-item="{{item}}" style="margin-bottom: 10rpx;">
+        <!-- 一级评论 -->
+        <view class="discuss-first-item" wx:if="{{item.parentId == 0 || item.parentId == null}}" 
+        data-index="{{index}}" bindtap="clickDiscuss" capture-bind:longpress="longpressDelete">
+          <view>{{item.identity}}</view>
+          <view class="cont-1" wx:if="{{item.content != null}}" style="color:#8a8484;">{{item.content}}</view>
+          <view style="color:#a3a0a0;font-size: 30rpx;position: absolute;left:58%;margin-top:-90rpx;">
+            {{item.discussTime}}
+          </view>
+
+
+        </view>
+
+        <!-- 多级评论 -->
+        <view class="discuss-last-item" wx:else data-index="{{index}}" bindtap="clickDiscuss" capture-bind:longpress="longpressDelete" style="margin-bottom: 5rpx;">
+          <view>{{item.identity}}</view>
+          <view style="margin-top:10rpx;">
+            <text style="color:#8a8484;"> 回复 </text>
+            <text>{{item.repIdentity}}：</text>
+            <text class="cont-2" wx:if="{{item.content != null}}" style="color:#8a8484;">{{item.content}}</text>
+          </view>
+          <text  style="float: right;position: absolute;left:58%;margin-top:-100rpx;color:#a3a0a0;font-size: 30rpx;">{{item.discussTime}}</text>
+        </view>
+       
+
+
+		</view>
+
+  </view>
+  
+</view>

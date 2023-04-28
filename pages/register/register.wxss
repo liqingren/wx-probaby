@@ -1,0 +1,24 @@
+/* pages/register/register.wxss */
+.content{
+  margin-top:80rpx;
+}
+.username{
+  display: flex;
+  flex-direction: row;
+  padding:40rpx 0 20rpx 40rpx;
+  width:100%;
+}
+.title{
+  width:160rpx;
+  text-align: right;
+}
+.hr{
+  border:2rpx solid #cccccc;
+  width:86%;
+  margin:0 auto;
+  opacity: 0.2;
+}
+.register{
+  display: flex;
+  flex-direction: row;
+}

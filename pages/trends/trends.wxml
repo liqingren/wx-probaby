@@ -1,0 +1,109 @@
+<!--pages/trends/trends.wxml-->
+<!-- 动态详情 -->
+<view class="trend-detail">
+  <!-- 动态日期和宝宝年龄 -->
+  <view class="info">
+    <text>{{trend.uploadTime}}</text>
+    <text wx:if="{{trend.age != null }}" style="margin-left: 20rpx;font-size: 26rpx;">{{trend.age}}</text>
+    <!-- 其他操作：删除、编辑、点赞、收藏等 -->
+    <view bindtap="clickOperator">
+      <text style-="float:right;margin-right:50rpx;font-size:44rpx;margin-top:-50rpx;" >...</text>
+    </view>
+   
+  </view>
+
+  <!-- 图片视频 -->
+  <view class="img">
+    <image wx:if="{{trend.trendPhoto != null}}"  wx:for="{{trend.images}}" wx:key="index" data-index="{{index}}" src="{{item}}" bindtap="clickAmplify" style="width:{{trend.width}};height:{{trend.height}}rpx;margin-bottom: 20rpx;"/>
+    <video wx:if="{{trend.trendVideo != null}}" src="{{trend.trendVideo}}" autoplay="true" play-btn-position="center" style="width:{{trend.width}};height:{{trend.height}}rpx;"/>
+  </view>
+
+  <!-- 内容 -->
+  <view class="content">
+    <view wx:if="{{trend.trendContent !=null && trend.trendContent != ''}}" style="text-align: justify;">
+      <rich-text nodes="{{trend.trendContent}}"/>
+    </view>
+  </view>
+
+  <!-- 标签 -->
+  <view class="tag">
+    <view wx:for="{{tags}}" wx:key="index" >
+      <text>#{{item.content}}</text>
+    </view>
+  </view>
+
+  <!-- 身份和具体上传时间 -->
+  <view class="identity">
+    <text>{{trend.identity}}，</text>
+    <text>{{trend.createTime}}</text>
+    <view  bindtap="bindReply">
+      <image src="../index/image/comment.png" style="width:60rpx;height:54rpx;float: right;margin-right:20rpx;margin-top:-10rpx;"/>
+    </view>
+    
+  </view>
+
+
+  <!-- 评论显示 -->
+  <view class="discuss" wx:if="{{trend.discusses.length>0}}">
+    <image src="/image/res.jpg"/>
+    <d-tree discussArr="{{trend.discusses}}" bind:resEvent="clickResponse" bind:flush="flushTree" id="dis-tree"></d-tree>
+    
+  </view>
+
+  <!-- 评论 -->
+  <view class="comment" style="margin-bottom: {{keywordHeight}}rpx;">
+    <view class="left">
+      <textarea class="text" placeholder-class="weui-input" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" adjust-position="false"  placeholder="{{placeholder}}" bindtap="bindReply" focus="{{releaseFocus}}" bindinput="responseInput" value="{{inputValue}}"/>
+      <view class="line"/>
+    </view>
+    <view style="margin:10rpx 0 0 10rpx;position: relative;z-index:2000;" bindtap="clickShowEmoji">
+      <image class="emoji" src="../trends/images/emji.jpg"/>
+    </view>
+     <!-- 发送按钮 -->
+     <view class="submit" bindtap="clickSaveDiscuss">发送</view>
+  </view>
+
+
+   <!-- 表情包 -->
+  <view class="emoji" wx:if="{{showEmoji}}" style="margin-left:-40rpx;position: relative;z-index:2000;">
+    <!-- 点击非表情包界面可隐藏 -->
+    <view class="emoji_screen" bindtap="hideEmoji"></view>
+    <emoji bind:emojiEvent="clickChooseEmoji" height="{{keywordHeight}}"></emoji>
+  </view>
+
+
+  <view class="screen">
+    <!--屏幕背景变暗的背景  -->
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showMiniStatus}}"></view>
+    <!--弹出框  -->
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showMiniStatus}}">
+       <!-- 标题 -->
+      <view class="title">
+        <text>其他操作</text>
+      </view>
+
+      <!-- 内容 -->
+      <view class="item">
+        <view  bindtap="clickDelete">
+          <image src="/image/delete.png"/>
+          <text>删除</text>
+        </view>
+
+        <view bindtap="clickEdit">
+          <image src="/image/edit.png"/>
+          <text>编辑</text>
+        </view>
+      </view>
+
+     
+
+      <!-- 取消 -->
+      <view class="exit" bindtap="clickHideOper">
+        <view>取消</view>
+      </view>
+
+    </view>
+  </view>
+
+
+</view>

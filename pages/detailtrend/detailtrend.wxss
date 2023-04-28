@@ -1,0 +1,218 @@
+page{
+  padding-bottom: 200rpx;
+}
+.detail-trend{
+  margin-top:40rpx;
+  margin-left:20rpx;
+}
+/* 用户信息 */
+.user-info{
+  display: flex;
+  flex-direction: row;
+}
+.user-info image{
+  width:90rpx;
+  height:90rpx;
+  border-radius: 50%;
+}
+.user-info view{
+  margin-top:5rpx;
+  margin-left: 20rpx;
+}
+.user-info text{
+  position: absolute;
+  left:17%;
+  margin-top:48rpx;
+  color:#aeaeae;
+  font-size: 28rpx;
+}
+.user-info .follow{
+  width:12%;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border:1rpx solid #aeaeae;
+  border-radius: 40rpx;
+  color: #aeaeae;
+  position: absolute;
+  left:82%;
+  font-size: 28rpx;
+}
+.user-info .followed{
+  width:16%;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #aeaeae;
+  position: absolute;
+  left:78%;
+  font-size: 28rpx;
+}
+/* 内容 */
+.cont-item{
+  margin:30rpx 0 20rpx 20rpx;
+}
+/* 视频或照片 */
+.media{
+  margin-left:20rpx;
+  margin-top:20rpx;
+}
+.media image{
+  float: left;
+  width:30%;
+  height:240rpx;
+  margin-right: 10rpx;
+  margin-bottom: 20rpx;
+}
+/* 标签 */
+.tags{
+  margin:20rpx 0 100rpx 0;
+}
+.tags view{
+ float: left;
+ margin-right: 20rpx;
+ color: #aeaeae;
+ margin-left:20rpx;
+}
+/* 写评论 */
+.comment-release{
+  height:90rpx;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  z-index:1000;
+}
+.comment-release textarea{
+  width:500rpx;
+  height:60rpx;
+  margin:20rpx 0 0 40rpx;
+}
+.comment-release image{
+  width:60rpx;
+  height:54rpx;
+  margin:30rpx 0 0 20rpx ;
+  
+}
+
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+/*对话框 */
+.commodity_attr_box {
+  /* height: 20%; */
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.item{
+  text-align: center;
+}
+.item .oper{
+  height:90rpx;
+  line-height:90rpx;
+  font-size: 34rpx;
+}
+.oper-exit{
+  width:100%;
+  height:100rpx;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 10rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #9c9a9a;
+}
+.hr{
+  border: 1rpx solid #dddcdc;
+  border-style: solid none none none;
+}
+/* 上传日期 */
+.create-time{
+  display: flex;
+  color:#8b8a8a;
+  margin-left:20rpx;
+  font-size: 30rpx;
+}
+
+/* 编辑删除操作框样式 */
+/*使屏幕变暗  */
+.commodity_screen_oper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+/*对话框 */
+.oper_box {
+  height: 24%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.oper_box .title{
+  text-align: center;
+}
+.oper_box .item{
+  display: flex;
+  flex-direction: row;
+  margin-left:40rpx;
+  margin-top:50rpx;
+}
+.oper_box .item view{
+  width:130rpx;
+  height:100rpx;
+  margin-right:20rpx;
+}
+.oper_box .item image{
+  width:50rpx;
+  height:50rpx;
+  margin-right:20rpx;
+}
+.oper_box .item text{
+  position: relative;
+  top:30rpx;
+  left:-70rpx;
+  font-size: 30rpx;
+}
+
+.oper_box .exit{
+  width:100%;
+  height:80rpx;
+  line-height: 80rpx;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  color: #aeaeae;
+  font-size: 40rpx;
+  border:1rpx solid #aeaeae;
+  border-style:solid none none none;
+}

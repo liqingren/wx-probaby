@@ -1,0 +1,24 @@
+.emoji{
+  width:100%;
+  overflow: scroll;
+  margin-left:-10rpx;
+  padding-bottom: 10rpx;
+  background-color: white;
+  position: fixed;
+  bottom:0rpx;
+  z-index:999;
+}
+.emoji-item{
+  display: inline-block;
+}
+.emoji-item view{
+  width:70rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  margin-top:8rpx;
+  padding-left:8px;
+  padding-right: 8rpx;
+  margin-left:4rpx;
+  font-size:46rpx;
+}

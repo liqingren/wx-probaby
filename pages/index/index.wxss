@@ -1,0 +1,316 @@
+page{
+  background-color: #f2f2f2;
+}
+/* 导航标签 */
+.nav{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+}
+.navitem{
+  width:25%;
+  position: relative;
+  top:-70rpx;
+  z-index:10;
+  color:white;
+  text-align: center;
+}
+/* 宝宝信息 */
+.baby-content{
+  position: relative;
+  top:-270rpx;
+  left:40rpx;
+  width:100%;
+  height:130rpx;
+}
+.info image{
+  width:120rpx;
+  height:120rpx;
+  border-radius: 50%;
+}
+.detail{
+  width:80%;
+  height:120rpx;
+  position: relative;
+  top:-120rpx;
+  left:20%;
+}
+.detail view{
+  position: relative;
+  color:white;
+  font-size: 34rpx;
+}
+.detail text{
+  position: relative;
+  color:white;
+  font-size: 28rpx;
+}
+/* 增加动态 */
+.add-post{
+  width:92%;
+  height:350rpx;
+  margin:0 auto;
+  background-color: white;
+  position: relative;
+  top:-140rpx;
+  text-align: center;
+}
+.add-post image{
+  width:280rpx;
+  height:160rpx;
+}
+
+.add-item button{
+  background-color: #ff9900;
+  color:white;
+  border-radius: 40rpx;
+  margin-top:20rpx;
+}
+
+
+/* 动态信息 */
+.box {
+  padding:30rpx;
+  position: relative;
+  top:-120rpx;
+}
+.one {
+  position: relative;
+}
+.onedot {
+  left: -2rpx;
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  background-color: #ff9900;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.oneline {
+  position: absolute;
+  left: 8rpx;
+  height: 100%;
+  border-left: 2px solid #e4e7ed;
+}
+.onemain {
+  position: relative;
+  padding-left: 40rpx;
+  top: -6rpx;
+}
+.onemaintitle {
+  height:60rpx;
+  margin-bottom: 16rpx;
+  padding-top: 8rpx;
+  line-height: 1;
+}
+.onemaincon {
+  color: #303133;
+}
+.cont-item{
+  width:100%;
+  background-color: white;
+  padding-top:20rpx;
+}
+.cont-item .trendCont{
+  width:94%;
+  padding:0 0 20rpx 20rpx;
+}
+.trendCont rich-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+/* 视频图片层 */
+.media{
+  width:100%;
+}
+.media video{
+  width:100%;
+  position: relative;
+  z-index: 100;
+} 
+
+.image-list{
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.image-list image{
+  width:100%;
+  position: relative;
+  z-index: 100;
+  margin-left:5rpx;
+}
+/* 身份上传时间 */
+.other-item{
+  margin-left:20rpx;
+  padding-bottom: 30rpx;
+  padding-top:10rpx;
+  font-size: 30rpx;
+  color: #aeaeae;
+}
+
+/* 评论 */
+.comment{
+  width:96%;
+  height:120rpx;
+  position: relative;
+  top:10rpx;
+  left:4%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom:-30rpx;
+}
+.comment .left{
+  width:64%;
+  height:60rpx;
+  margin-top:10rpx;
+}
+.comment .line{
+  width:100%;
+  border:1rpx solid #aeaeae;
+  border-style: solid none none none;
+}
+.comment image{
+  width:50rpx;
+  height:50rpx;
+  margin-top:5rpx;
+}
+.comment-btn button{
+  width:100%;
+  background-color: #ff9900;
+  color: white;
+  font-weight: normal;
+  height:60rpx;
+  line-height: 30rpx;
+  font-size: 26rpx;
+  position: relative;
+  z-index:999;
+  
+}
+.discuss{
+  margin-left:10rpx;
+  display: flex;
+  font-size: 30rpx;
+  padding-bottom: 20rpx;
+}
+.discuss image{
+  width:40rpx;
+  height:40rpx;
+  margin-right:10rpx;
+  margin-top:3rpx;
+}
+
+
+/* 键盘 */
+.keyword{
+  width:100%;
+  position: fixed;
+  bottom: 0;
+  z-index:1000;
+  height:80rpx;
+  display: flex;
+  padding:20rpx;
+  justify-content: space-between;
+  background-color: white;
+}
+.keyword_screen{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 10;
+}
+.keyword-item{
+  width:60%;
+  position: relative;
+  z-index:999;
+}
+.keyword-item .textarea{
+  width:100%;
+  height:70rpx;
+  background-color: #f2f2f2;
+  padding-top:20rpx ;
+  padding-left:20rpx; 
+}
+.keyword-item-img{
+  position: relative;
+  z-index:2000;
+  width:10%;
+  text-align: center;
+  margin-left:25rpx;
+  margin-top:10rpx;
+}
+.keyword-item-img image{
+  width:60rpx;
+  height:60rpx;
+}
+.keyword .res-btn{
+  width:20%;
+  height:75rpx;
+  line-height: 75rpx;
+  margin-left:10rpx; 
+  margin-top:5rpx;
+  margin-right: 40rpx;
+  background-color: #ff9900;
+  text-align: center;
+  color:white;
+  border-radius: 10rpx;
+  position: relative;
+  z-index:999;
+}
+/* 显示剩下数据的操作框 */
+.left-item-modal{
+  width:98%;
+  height:60rpx;
+  margin-left:20rpx;
+}
+/* 半年前的剩下的动态 */
+.develop{
+  display: flex;
+  position: relative;
+  z-index:999;
+}
+
+.develop .diver{
+  border:1rpx solid #d4d0d0;
+  width:25%;
+  border-style: solid none none none;
+  margin-top:20rpx;
+}
+.left-over{
+  display: flex; 
+  position: relative;
+  z-index:999;
+}
+.left-over .diver{
+  border:1rpx solid #d4d0d0;
+  width:37%;
+  border-style: solid none none none;
+  margin-top:20rpx;
+}
+.relativeView{
+  height:1rpx;
+  width:94%;
+  position: fixed;
+  top:50%;
+  z-index:-999;
+}
+/* 表情包 */
+.emoji_screen{
+  width: 100%;
+  height: 46%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 10;
+}

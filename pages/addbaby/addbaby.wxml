@@ -1,0 +1,59 @@
+<!--pages/addbaby/addbaby.wxml-->
+<view class="content">
+  <!-- 宝宝信息 -->
+  <view class="info">
+    <!-- 性别 -->
+    <view class="sex">
+      <view wx:for="{{sexList}}" wx:key="index" data-index="{{index}}" class="{{item.checked ? 'active' : ''}}" bindtap="sexSwitch">{{item.val}}</view>
+    </view>
+
+    <!-- 生日 -->
+    <view class="birth">
+      <view style="margin-bottom: 10rpx;">
+        生日
+      </view>
+      <picker mode="date" class="section_picker" bindchange="bindDateChange" value="{{birth}}">
+      <view class="picker_birth" wx:if="{{birth === null}}">
+        <text style="margin-left:40rpx;">请选择宝宝的生日</text>
+        <text class="delimiter">></text>
+      </view>
+      <view class="picker_birth" wx:else>
+        <text style="margin-left:40rpx;">{{birth}}</text>
+        <text class="delimiter">></text>
+      </view>
+    </picker>
+
+    </view>
+
+    <!-- 小名 -->
+    <view class="nickname">
+      <view style="margin-bottom: 10rpx;">
+        小名
+      </view>
+      <view class="nick_content">
+        <input type="text" bindinput="nicknameInput" placeholder="请输入宝宝小名"/>
+        <text>></text>
+      </view>
+    </view>
+
+    <!-- 家长身份 -->
+    <view class="relative">
+      <view style="margin-bottom: 10rpx;">
+        你是宝宝的
+      </view>
+
+      <!-- 关系 -->
+      <view class="relate">
+        <view wx:for="{{relativeList}}" wx:key="index" data-index="{{index}}" class="{{item.checked ? 'active' : ''}}" bindtap="relativeSwitch">{{item.relative}}</view>
+  
+      </view>
+    </view>
+
+    <!-- 保存按钮 -->
+    <view class="add">
+      <button bindtap="handleInsert">添加</button>
+    </view>
+
+    
+  </view>
+</view>

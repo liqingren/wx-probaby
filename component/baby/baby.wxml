@@ -1,0 +1,72 @@
+<view class="content">
+  <!-- 添加宝宝 -->
+  <view style="display: flex;justify-content: center;align-items: center;padding-top:30rpx;">
+    <view class="add" bindtap="handleSaveBaby">
+      <image src="/image/addbaby.jpg" class="baby-img"></image>
+      <view>添加我的宝宝</view>
+    </view>
+
+    <view class="scan" bindtap="handleScanCode">
+      <image src="../../pages/my/image/scan.jpg"/>
+      <view>扫码关注</view>
+    </view>
+    
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">
+    
+  </view>
+
+  <!-- 展示所有宝宝 -->
+  <view class="show">
+    <view wx:for="{{babies}}" wx:key="index" bindtap="handleBabyInfo" data-index="{{index}}" capture-bind:longpress="handleOperator">
+      <view class="info">
+        <image wx:if="{{item.babyPhoto === null}}" src="/image/default.jpg"></image>
+        <image wx:else src="{{item.babyPhoto}}" ></image>
+        <text class="delimiter">></text>
+        <view wx:if="{{item.nickname == null || item.nickname == ''}}">宝宝</view>
+        <view wx:else>{{item.nickname}}</view>
+        
+        <text wx:if="{{item.age != null && item.age != ''}}">{{item.age}}</text>
+        <text wx:else></text>
+      </view>
+     
+       <!-- 分割线 -->
+      <view class="divider">
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 操作界面：删除宝宝或查看宝宝详情 -->
+  <view class="screen">
+    <!--屏幕背景变暗的背景  -->
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showMiniStatus}}"></view>
+    <!--弹出框  -->
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showMiniStatus}}">
+
+      <!-- 内容 -->
+      <view class="item">
+        <view  bindtap="clickDetailInfo" class="oper">
+          <text>查看宝宝信息</text>
+        </view>
+
+          <!-- 分割线 -->
+       <view class="hr1">
+          
+        </view>
+
+        <view bindtap="clickDelete" class="oper">
+          <text>删除宝宝</text>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+
+  
+
+</view>

@@ -1,0 +1,33 @@
+<!--pages/invited/invited.wxml-->
+<!-- 判断是否已关注了宝宝（已有亲友关系） -->
+<view class="invited">
+  <!-- 未关注 -->
+  <view wx:if="{{!flag}}" class="item">
+    <view class="baby-info">
+      <image wx:if="{{baby.babyPhoto != null}}" src="{{baby.babyPhoto}}"/>
+      <image wx:else src="/image/default.jpg"/>
+      <view style="margin-top:10rpx;margin-bottom: 20rpx;font-size: 30rpx;">{{baby.nickname}}</view>
+      <view>你即将关注{{baby.nickname}}的亲宝宝空间</view>
+    </view>
+
+    <!-- 关注 -->
+    <view class="enter">
+      <button class="btn" bindtap="clickInvitation">马上关注</button>
+    </view>
+  </view>
+
+  <!-- 已关注 -->
+  <view wx:if="{{flag}}" class="item">
+    <view class="baby-info">
+      <image wx:if="{{baby.babyPhoto != null}}" src="{{baby.babyPhoto}}"/>
+      <image wx:else src="/image/default.jpg"/>
+      <view style="margin-top:10rpx;margin-bottom: 20rpx;font-size: 30rpx;">{{baby.nickname}}</view>
+      <view>你已关注了{{baby.nickname}}的亲宝宝空间</view>
+    </view>
+    
+    <!-- 关注 -->
+    <view class="enter">
+      <button class="btn" bindtap="clickEnter">进入亲宝宝空间</button>
+    </view>
+  </view>
+</view>

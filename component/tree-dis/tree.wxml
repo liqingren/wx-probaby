@@ -1,0 +1,28 @@
+<!-- 亲友的评论 -->
+<view class="tree-discuss">
+  <view wx:for="{{discussArr}}" wx:key="index">
+    <view class="discuss" data-index="{{index}}" data-item="{{item}}">
+        <!-- 一级评论 -->
+        <view class="discuss-first-item" wx:if="{{item.parentId == 0}}" 
+        data-index="{{index}}" bindtap="clickDiscuss" capture-bind:longpress="longpressDelete"  style="margin-bottom: 5rpx;">
+          <text>{{item.identity}}：</text>
+          <text class="cont-1" wx:if="{{item.content != null}}" style="color:#8a8484;">{{item.content}}</text>
+
+        </view>
+
+        <!-- 多级评论 -->
+        <view class="discuss-first-item" wx:else data-index="{{index}}" bindtap="clickDiscuss" capture-bind:longpress="longpressDelete"  style="margin-bottom: 5rpx;">
+          <text>{{item.identity}}</text>
+          <text style="color:#8a8484;"> 回复 </text>
+          <text>{{item.repIdentity}}：</text>
+          <text class="cont-1" wx:if="{{item.content != null}}" style="color:#8a8484;">{{item.content}}</text>
+        </view>
+       
+
+
+		</view>
+
+ 
+  </view>
+  
+</view>

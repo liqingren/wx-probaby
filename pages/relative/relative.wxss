@@ -1,0 +1,94 @@
+/* pages/relative/relative.wxss */
+page{
+  margin:20rpx;
+}
+/* 爸爸妈妈 */
+.rela-show-1{
+  width:96%;
+  height:220rpx;
+  display: flex;
+  text-align: center;
+}
+.rela-show-1 .mom{
+  width:48%;
+}
+.rela-show-1 .mom image{
+  width:140rpx;
+  height:140rpx;
+  border-radius: 50%;
+}
+.rela-show-1 .dad{
+  width:48%;
+}
+.rela-show-1 .dad image{
+  width:140rpx;
+  height:140rpx;
+  border-radius: 50%;
+}
+.myself{
+  border:1rpx solid #aeaeae;
+  width:44rpx;
+  height:30rpx;
+  line-height:30rpx;
+  text-align: center;
+  border-radius:16rpx;
+  margin:6rpx 10rpx 0 10rpx;
+  font-size: 22rpx;
+}
+/* 分割线 */
+.hr{
+  width:96%;
+  height: 20rpx;
+  background-color: #f2f2f2;
+  opacity: 0.8;
+}
+/* 其他亲友 */
+.rela-show-2 .other{
+  width:96%;
+  height:120rpx;
+  display: flex;
+  border:1rpx solid #f2f2f2;
+  border-style: none none solid none;
+  padding-top:20rpx ;
+}
+.rela-show-2 .other image{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50%;
+}
+.rela-show-2 .other view{
+  margin-left:30rpx;
+  margin-top:20rpx;
+}
+.item-myself{
+  border:1rpx solid #aeaeae;
+  width:44rpx;
+  height:30rpx;
+  line-height:30rpx;
+  text-align: center;
+  border-radius:16rpx;
+  position: relative;
+  top:6rpx;
+  left:-10rpx;
+  font-size: 22rpx;
+}
+/* 邀请亲友 */
+.invite{
+  width:56%;
+  height:140rpx;
+  text-align: center;
+  font-weight: bold;
+  margin:0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.invite view{
+  height:100rpx;
+  line-height: 100rpx;
+  width:100%;
+  opacity: 0.5;
+  border:1rpx solid #ff9900;
+  border-radius: 60rpx;
+}
+

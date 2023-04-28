@@ -1,0 +1,50 @@
+<!--pages/retrieve/retrieve.wxml-->
+<!-- 找回密码（修改密码） -->
+<view class="retrieve">
+   <!-- 账号 -->
+   <view class="username">
+      <view class="title">账号：</view>
+      <view class="userid">
+        <input type="number" model:value="{{phone}}" maxlength="11" bindinput="phoneInput" placeholder="请输入手机号"/>
+      </view>
+    </view>
+
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+
+  <!-- 新密码 -->
+  <view class="username">
+    <view class="title">新密码：</view>
+    <view class="new-pass">
+      <input type="text" password="{{show}}" model:value="{{newPass}}" bindinput="newPassInput" placeholder="请输入密码（至少六位）"/>
+    </view>
+    <image src="../register/image/no_eye.gif" wx:if="{{show}}" style="width:34px;height:22px;" bindtap="showPass"></image>
+    <image src="../register/image/eye.gif" wx:else style="width:34px;height:22px;" bindtap="showPass"></image>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+
+  <!-- 确认新密码 -->
+  <view class="username">
+    <view class="title">确认密码：</view>
+    <view class="check-pass">
+      <input type="text" password="{{showCheck}}" model:value="{{checkPass}}" bindinput="checkPassInput" placeholder="请再次输入"/>
+    </view>
+    <image src="../register/image/no_eye.gif" wx:if="{{showCheck}}" style="width:34px;height:22px;" bindtap="showCheckPass"></image>
+    <image src="../register/image/eye.gif" wx:else style="width:34px;height:22px;" bindtap="showCheckPass"></image>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+
+  <!-- 保存按钮 -->
+  <button type="primary" disabled="{{saveBtnState}}" class="saveBtn" bindtap="savePassword"
+  style="background-color: #ff9933;width:86%;margin-top:40rpx;">保存</button>
+
+
+</view>
+

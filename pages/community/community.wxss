@@ -1,0 +1,117 @@
+/* pages/community/community.wxss */
+page{
+  margin-right: 40rpx;
+  width:96%;
+}
+.community{
+  margin-left:40rpx;
+  margin-top:40rpx;
+}
+.post{
+  margin:20rpx 0 40rpx 0;
+}
+.user-info{
+  width:78%;
+  display: flex;
+  flex-direction: row;
+}
+.user-info image{
+  width:90rpx;
+  height:90rpx;
+  border-radius: 50%;
+}
+.user-info view{
+  margin-top:5rpx;
+  margin-left: 20rpx;
+}
+.user-info text{
+  position: absolute;
+  left:20%;
+  margin-top:48rpx;
+  color:#aeaeae;
+  font-size: 28rpx;
+
+}
+.user-follow .follow{
+  width:12%;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border:1rpx solid #aeaeae;
+  border-radius: 40rpx;
+  color: #aeaeae;
+  position: absolute;
+  left:82%;
+  font-size: 28rpx;
+  margin-top:-90rpx;
+}
+.user-follow .followed{
+  width:16%;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #aeaeae;
+  position: absolute;
+  left:78%;
+  font-size: 28rpx;
+  margin-top:-90rpx;
+}
+.cont-item{
+  margin:30rpx 0 0 0;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.media .media-image{
+  width:30%;
+  height:230rpx;
+  margin-right:5rpx;
+  position: relative;
+  z-index:100;
+}
+.video-list{
+  margin-top:40rpx;
+  height:500rpx;
+}
+.comment{
+  width:100%;
+  height:110rpx;
+  line-height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  border:1rpx solid #ebebeb;
+  border-style: solid none none none;
+  margin-left:-20rpx;
+  margin-top:20rpx;
+}
+.comment view{
+  width:33%;
+  text-align: center;
+}
+.comment image{
+  width:50rpx;
+  height:44rpx;
+}
+.comment text{
+  position: relative;
+  top:-10rpx;
+  font-size: 28rpx;
+}
+.hr{
+  width:110%;
+  height: 20rpx;
+  margin-left:-40rpx;
+  background-color: #f2f2f2;
+  opacity: 0.6;
+}
+.relativeView{
+  height:1rpx;
+  width:94%;
+  position: fixed;
+  top:50%;
+  z-index:-999;
+}

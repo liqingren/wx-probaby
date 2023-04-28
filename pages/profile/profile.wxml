@@ -1,0 +1,81 @@
+<!--pages/profile/profile.wxml-->
+<view class="content">
+
+  <!-- 头像 -->
+  <view class="image" bindtap="upload">
+    <view>
+      <text>头像</text>
+      <image class="img" src="../my/image/default.png" wx:if="{{user.userPhoto == null || user.userPhoto ==''}}"></image>
+      <image class="img" src="{{user.userPhoto}}" wx:else></image>
+      <text style="position: absolute;left:88%;font-size:50rpx;color:#aeaeae">></text>
+    </view>
+    
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">
+    
+  </view>
+
+  <!-- 用户名 -->
+  <view class="username">
+    <view>
+      <text>用户名</text>
+      <input type="text" value="{{user.username}}" bindinput="usernameInput" />
+      <text style="position: absolute;left:88%;font-size:50rpx;color:#aeaeae">></text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr1">
+    
+  </view>
+
+  <!-- 性别 -->
+  <view class="info">
+    <picker class="section_picker" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <text>性别</text>
+      <text class="picker_sex" wx:if="{{user.userSex === null}}">未填写</text>
+      <text class="picker_sex" wx:elif="{{user.userSex === true}}" style="left:66%">男</text>
+      <text class="picker_sex" wx:elif="{{user.userSex === false}}" style="left:66%">女</text>
+      <text class="delimiter">></text>
+    </picker>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">
+    
+  </view>
+
+  <!-- 生日 -->
+  <view class="info">
+    <picker mode="date" class="section_picker" bindchange="bindDateChange" value="{{birth}}">
+      <text>生日</text>
+      <text class="picker_birth" wx:if="{{birth === null}}" style="left:52%">未填写</text>
+      <text class="picker_birth" wx:else>{{birth}}</text>
+      <text class="delimiter">></text>
+    </picker>
+  </view>
+
+   <!-- 分割线 -->
+   <view class="hr">
+    
+  </view>
+
+
+  <!-- 地区 -->
+  <view class="info">
+    <picker mode="region" class="section_picker" bindchange="bindRegionChange" value="{{user.userCity}}" custom-item="{{customItem}}">
+      <text>地区</text>
+      <text class="picker_city" wx:if="{{user.userCity == null}}" style="left:53%">未填写</text>
+      <text class="picker_city" wx:else>{{user.userCity}}</text>
+      <text class="delimiter">></text>
+    </picker>
+  </view>
+
+  <!-- 保存 -->
+  <view class="save" bindtap="saveInfo">
+    <text>保存</text>
+  </view>
+
+</view>

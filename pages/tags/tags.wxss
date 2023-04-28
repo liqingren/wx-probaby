@@ -1,0 +1,52 @@
+/* pages/tags/tags.wxss */
+.tag{
+  margin-top:40rpx;
+  margin-left:40rpx;
+}
+.tag-item{
+  width:90%;
+  line-height: 100rpx;
+  background-color: #f5f5f5;
+  margin-top:20rpx;
+}
+.tag-item input{
+  height:80rpx;
+  padding-left: 40rpx;
+}
+.show view{
+  float: left;
+  width:20%;
+  height:60rpx;
+  line-height: 60rpx;
+  background-color: #f5f5f5;
+  border-radius: 40rpx;
+  margin: 40rpx 10rpx 20rpx 10rpx;
+  text-align: center;
+}
+.show view.active{
+  background-color: #ff9900;
+}
+.show view text{
+  font-size: 30rpx; 
+}
+.save{
+  width:100%;
+  position: relative;
+  top:40rpx;
+  left:-40rpx;
+  display: flex;
+  flex-direction: row;
+}
+.save .btn-save{
+  width:40%;
+  background-color: #ff9900;
+  font-weight: normal;
+  color: white;
+  border-radius: 40rpx;
+}
+.save .exit{
+  width:30%;
+  background-color: #f5f5f5;
+  font-weight: normal;
+  border-radius: 40rpx;
+}

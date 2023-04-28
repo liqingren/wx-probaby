@@ -1,0 +1,52 @@
+<!--pages/record/record.wxml-->
+<view class="content">
+  
+  <view class="record">
+    <!-- 添加记录 -->
+    <view  class="add">
+      <navigator hover-class="none" url="../addrecord/addrecord?babyId={{babyId}}">
+      <image src="../record/image/add.png"></image>
+      <view>添加</view>
+    </navigator>
+    </view>
+    
+
+    <!-- 记录信息 -->
+    <view style="margin-top: 30rpx;">
+      <view class="info" wx:for="{{recordList}}" wx:key="index" data-index="{{index}}" capture-bind:longpress="longpressDelete">
+        <text style="margin-right:20rpx;">{{item.recordTime}}</text>
+        <text>{{item.age}}</text>
+        <view class="detail">
+            <!-- 身高 -->
+            <view>
+            身高
+            <text wx:if="{{item.height == null}}">-</text>
+            <text wx:else style="color:#ff9900">{{item.height}}</text>
+            <text>cm</text>
+            </view>
+
+            <!-- 体重 -->
+            <view>
+              体重
+              <text wx:if="{{item.weight == null}}">-</text>
+              <text wx:else style="color:#ff9900">{{item.weight}}</text>
+              <text>kg</text>
+            </view>
+
+            <!-- 头围 -->
+            <view>
+              头围
+              <text wx:if="{{item.head == null}}">-</text>
+              <text wx:else style="color:#ff9900">{{item.head}}</text>
+              <text>cm</text>
+            </view>
+          </view>
+
+      </view>
+    </view>
+    
+
+  </view>  
+
+</view>
+

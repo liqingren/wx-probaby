@@ -1,0 +1,36 @@
+/* pages/phoneLogin/phoneLogin.wxss */
+.content{
+  margin-top:80rpx;
+}
+.username{
+  display:flex;
+  flex-direction: row;
+  padding:40rpx 0 30rpx 40rpx;
+  width:100%;
+}
+.title{
+  width:160rpx;
+  font-weight: bold;
+  text-align: right;
+}
+.hr{
+  border:2rpx solid #cccccc;
+  width:90%;
+  margin:0 auto;
+  opacity: 0.2;
+}
+.loginBtn{
+  width:100%;
+}
+.miniLogin{
+  display: flex;
+  flex-direction: row;
+  width:90%;
+  margin:0 auto;
+}
+.miniLogin view{
+  margin:0 auto;
+  margin-top:80rpx;
+  font-size:38rpx;
+  color:#333;
+}

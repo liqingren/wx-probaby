@@ -1,0 +1,67 @@
+<!--pages/relative/relative.wxml-->
+<!-- 亲友 -->
+<view class="relative">
+  <!-- 显示亲友：妈妈、爸爸 -->
+  <view class="rela-show-1">
+    <!-- 妈妈信息：头像、昵称、身份 -->
+    <view class="mom">
+      <image wx:if="{{mom.userPhoto != null}}" src="{{mom.userPhoto}}"/>
+      <image wx:else src="../relative/image/mom.jpg"/>
+      <image wx:if="{{mom.userId == createUserId}}" src="../relative/image/create.jpg" style="width:40rpx;height:40rpx;border-radius: 50%;position: relative;left:-10%;"/>
+      <view style="display: flex;position: relative;left:30%;top:10rpx;">
+        <view class="identity">妈妈</view>
+        <view wx:if="{{userId == mom.userId}}" class="myself">我</view>
+        <view wx:if="{{mom.identity == null}}"  style="font-size: 26rpx;margin-top:6rpx;margin-left:10rpx;color: #aeaeae;">还未来过</view>
+      </view>
+      
+    </view>
+
+    <!-- 爸爸信息：头像、昵称、身份 -->
+    <view class="dad">
+      <image wx:if="{{dad.userPhoto != null}}" src="{{dad.userPhoto}}"/>
+      <image wx:else src="../relative/image/dad.jpg"/>
+      <image wx:if="{{dad.userId == createUserId}}" src="../relative/image/create.jpg" style="width:40rpx;height:40rpx;border-radius: 50%;position: relative;left:-10%;"/>
+      <view style="display: flex;position: relative;left:34%;top:10rpx;">
+        <view class="identity">爸爸</view>
+        <view wx:if="{{userId == dad.userId}}" class="myself">我</view>
+        <view wx:if="{{dad.identity == null}}" style="font-size: 26rpx;margin-top:6rpx;color: #aeaeae;margin-left:10rpx;">还未来过</view>
+      </view>
+      
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr">
+    
+  </view>
+
+   <!-- 邀请：生成包含宝宝信息的二维码 -->
+  <view class="invite" bindtap="clickInvite">
+    <view>
+      <text>面对面邀请</text>
+    </view>
+    
+    
+  </view>
+
+  <!-- 分割线 -->
+  <view class="hr" wx:if="{{identities.length>0}}">
+    
+  </view>
+
+  <!-- 显示其他亲友：外婆、外公、爷爷、奶奶。。。 -->
+  <view class="rela-show-2" wx:if="{{identities.length>0}}" wx:for="{{identities}}" wx:key="index">
+    <view class="other"  data-index="{{index}}">
+      <image wx:if="{{item.userPhoto != null}}" src="{{item.userPhoto}}"/>
+      <image wx:else src="../my/image/default.png"/>
+      <image wx:if="{{item.userId == createUserId}}" src="../relative/image/create.jpg" style="width:40rpx;height:40rpx;border-radius: 50%;margin-top:60rpx;margin-left:-36rpx;"/>
+      <view class="identity">{{item.identity}}</view>
+      <view wx:if="{{userId == item.userId}}" class="item-myself">我</view>
+      <view style="position: absolute;left:86%;color: #aeaeae;">></view>
+    </view>
+  
+  </view>
+
+ 
+
+</view>

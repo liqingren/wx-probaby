@@ -1,0 +1,110 @@
+<!-- 树：递归组件 -->
+<view class="tree-response">
+	<view wx:for="{{commentArray}}" wx:key="index">
+		<view class="comment" data-index="{{index}}" data-item="{{item}}">
+        <!-- 一级评论 -->
+        <view class="comment-first-item" wx:if="{{item.parentId == 0}}"
+        >
+          <image wx:if="{{item.userPhoto != null}}" src="{{item.userPhoto}}" mode=""/>
+          <image wx:else src="/image/default.png"></image>
+          <view data-index="{{index}}" bindtap="responseComment">{{item.username}}</view>
+          <view style="color: #aeaeae;font-size: 30rpx;">{{item.commentTime}}</view>
+          <view class="cont-1" wx:if="{{item.content != null}}" data-index="{{index}}" bindtap="responseComment">{{item.content}}</view>
+          <view class="cont-1" wx:else bindtap="clickShowMedia" data-comment="{{item}}">
+            [图片]
+          </view>
+
+        </view>
+
+        <!-- 多级评论 -->
+        <view class="comment-last-item" wx:if="{{item.children.length>0}}">
+          <view wx:for="{{item.children}}" wx:key="index" wx:for-item="child">
+            <view class="cont-2" wx:if=" {{item.commentId == child.parentId}}">  
+              <text data-comment="{{child}}" bindtap="clickMutlResponse" style="color: cornflowerblue;">{{child.username}}</text>
+              <text> 回复 </text>
+              <text style="color: cornflowerblue;">{{item.username}}</text>
+              <text wx:if="{{child.content != null}}">：{{child.content}}</text>
+              <text wx:else data-comment="{{child}}" style="position: relative;z-index:999;" bindtap="clickShowMedia">：[图片]</text>
+              <view style="margin-left:20rpx;margin-top:5rpx;font-size: 30rpx;color: #aeaeae;">{{child.commentTime}}</view>
+            </view>
+          </view>
+        </view>
+
+		</view>
+ 
+
+    <!-- 递归显示多级评论 -->
+		<view class="left">
+			<z-tree wx:if="{{item.children.length>0}}" commentArr="{{item.children}}" trend_userId="{{trend_userId}}"  bind:comEvent="clickMultResponse"></z-tree>
+		</view>
+ 
+	</view>
+
+
+
+   <!-- 操作界面：回复或删除评论 -->
+   <view class="screen">
+    <!-- 屏幕背景变暗的背景  -->
+    <view class="commodity_screen" bindtap="hideComtModal" wx:if="{{showMiniStatus}}"></view>
+    <!-- 弹出框  -->
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showMiniStatus}}" style="height:{{height}}rpx">
+
+      <!-- 内容 -->
+      <view class="item" wx:if="{{flag}}">
+        <view bindtap="navigateComment" class="oper" wx:if="{{comment.userId != userId}}">
+          <text>回复 </text>
+          <text style="color: #929191;font-size: 32rpx;">{{comment.username}}</text>
+        </view>   
+
+        <!-- 分割线 -->
+        <view class="hr" wx:if="{{comment.userId != userId}}">    
+        </view>
+
+        <view bindtap="clickDeleteComment" class="oper">
+          <text>删除评论</text>
+        </view>
+
+      </view>
+
+      <!-- 内容 -->
+      <view class="item" wx:if="{{!flag}}">
+        <view wx:if="{{comment.userId != userId}}"  bindtap="navigateComment" class="oper">
+          <text>回复 </text>
+          <text style="color: #929191;font-size: 32rpx;">{{comment.username}}</text>
+        </view>   
+
+        <!-- 分割线 -->
+        <view wx:if="{{comment.userId != userId}}"  class="hr">    
+        </view>
+
+        <view wx:if="{{comment.userId == userId}}"  bindtap="clickDeleteComment" class="oper">
+          <text>删除评论</text>
+        </view>
+
+      </view>
+
+
+      <view class="oper-exit">
+        <!-- 分割线 -->
+        <view class="hr">
+          
+        </view>
+
+        <view class="exit" bindtap="clickExit">
+          <text>取消</text>
+        </view>
+      </view>
+      
+
+
+     
+
+    </view>
+
+  </view>
+
+
+  
+
+
+</view>

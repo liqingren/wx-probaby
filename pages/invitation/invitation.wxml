@@ -1,0 +1,20 @@
+<!--pages/invitation/invitation.wxml-->
+<!-- 扫描二维码弹出选择亲友关系页面 -->
+<view class="invitation">
+    <!-- 点击保存亲友关系 -->
+    <view class="next">
+      <button class="btn" bindtap="saveRelative">下一步</button>
+    </view>
+    <view class="baby-info">
+      <view>
+        你是{{baby.nickname}}的
+      </view>
+    </view>
+
+    <!-- 关系 -->
+    <view class="relative">
+      <view  class="{{item.checked ? 'active' : 'item'}}"  wx:for="{{relativeArr}}" wx:key="index" data-index="{{index}}" bindtap="selectRealtive">
+        {{item.val}}
+      </view>
+    </view>
+</view>

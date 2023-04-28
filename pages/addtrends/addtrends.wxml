@@ -1,0 +1,87 @@
+<!--pages/addtrends/addtrends.wxml-->
+<!-- 增加动态 -->
+<view class="insert-trends">
+  <!-- 动态内容 -->
+  <view class="content">
+      <editor class="editor" id="editor" placeholder="宝宝在笑、在跑...还是发呆中？" bindinput="changeContent" bindready="onEditorReady" style="height:auto;"></editor>
+    
+  </view>
+
+  <view>
+      <!-- 上传照片或视频 -->
+    <view class="media">
+      <view>
+        <image  bindtap="handleInsertVedio" src="../addtrends/image/vedio.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;display: {{uploadVedio}};"></image>
+
+        <!-- 显示上传的视频 -->
+        
+        <video src="{{images[0]}}" wx:if="{{type == 'video' && images.length>0}}" autoplay="true" capture-bind:longpress="deleteVideo"></video>
+
+        <!-- 循环显示上传的图片 -->
+        <image wx:if="{{type == 'image' && images.length>0}}" wx:for="{{images}}" wx:key="index" data-index="{{index}}" src="{{item}}" bindtap="clickImage" capture-bind:longpress="deleteImage">
+        </image>
+
+        <image  bindtap="handleInsertImage" src="../addtrends/image/img.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;display: {{uploadImg}};"></image>
+
+        
+      </view>
+      <text>最多上传一个视频或9张图片</text>
+    </view>
+
+    <!-- 标签 -->
+    <view class="tag">
+    <!-- 显示已添加的标签 -->
+      <view class="show">
+        <view class="show-item" wx:for="{{tags}}" wx:key="index" data-index="{{index}}"  style="width:{{item.width}}">
+          <text data-index="{{index}}">{{item.content}}</text>
+          <image src="../addtrends/image/del.jpg"  data-index="{{index}}" bindtap="deleteTags"/>
+        </view>
+      </view>
+      
+
+      <!-- 增加标签 -->
+      <view class="tag-item" bindtap="handleInsertTags" wx:if="{{showTag}}">
+        <image src="../addtrends/image/tag.jpg" mode=""/>
+        <text>标签</text>
+      </view>
+    </view>
+
+
+
+    <view>
+        <!-- 谁可以看 -->
+      <view class="permission">
+        <picker class="section_picker" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <image src="../addtrends/image/per.jpg"/>
+          <text>谁可以看</text>
+          <text class="picker_permiss">{{array[index]}}</text>
+          <text class="delimiter">></text>
+        </picker>
+        
+      </view>
+
+      <!-- 记录时间 -->
+      <view class="datetime">
+        <picker mode="date" class="section_picker" bindchange="bindTimeChange" value="{{trend.uploadTime}}">
+          <image src="../addtrends/image/date.jpg"/>
+          <text>记录时间</text>
+          <text class="picker_date">{{trend.uploadTime}}</text>
+          <text class="delimiter">></text>
+        </picker>
+      </view>
+
+
+      <!-- 保存或取消 -->
+      <view class="save">
+        <button class="exit" bindtap="handleExitTrends">取消</button>
+        <button class="btn-save" bindtap="handleSaveTrends">保存</button>
+      </view>
+
+
+    </view>
+  </view>
+  
+ 
+
+
+</view>

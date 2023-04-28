@@ -1,0 +1,220 @@
+<!--pages/baby/baby.wxml-->
+<view class="content" wx:if="{{showBaby}}">
+  <!-- 背景图 -->
+  <view class="img">
+    <image src="/pages/index/image/bg.jpg" style="width:100%;height:380rpx;"></image>
+  </view>
+
+  <!-- 导航 -->
+  <view class="nav">
+    <view class="navitem">
+      <text bindtap="clickShowBaby">宝宝</text>
+    </view>
+    <view class="navitem">
+      <navigator url="../record/record">生长记录</navigator>
+    </view>
+    <view class="navitem">
+      <navigator url="../bigevent/bigevent">大事记</navigator>
+    </view>
+    <view class="navitem">
+      <navigator wx:if="{{relativeCount == ''}}" url="../relative/relative">亲友</navigator>
+      <navigator wx:else url="../relative/relative">{{relativeCount}}位亲友</navigator>
+    </view>
+  
+  </view>
+
+
+
+  <!-- 宝宝信息 -->
+  <view class="baby-content">
+    <view class="info">
+      <!-- 宝宝照片 -->
+      <view bindtap="handleAvator">
+        <image wx:if="{{baby.babyPhoto === null}}" src="/image/default.jpg"></image>
+        <image wx:else src="{{baby.babyPhoto}}"></image>
+      </view>
+      
+      <!-- 宝宝小名和年龄 -->
+      <view class="detail" bindtap="handleBabyInfo">
+        <view wx:if="{{baby.nickname == null || baby.nickname == ''}}">宝宝</view>
+        <view wx:else="{{baby.nickname != null && baby.nickname != ''}}">{{baby.nickname}}</view>
+        <text wx:if="{{age == null || age ==''}}">点击完善宝宝信息</text>
+        <text wx:else="{{age != null && age !=''}}">{{age}}</text>
+        <image src="../index/image/edit.png"
+          style="width:30rpx;height:30rpx;border-radius: 0;position: relative;left:2%;top:4rpx;">
+        </image>
+      </view> 
+    </view>
+   
+  </view>
+
+
+
+
+  <!-- 增加动态 -->
+  <view class="add-post">
+    <image src="../index/image/post.jpg"/>
+    <view class="add-item" >
+      <text>上传照片视频，记录宝宝成长</text>
+      <view style="display: flex;flex-direction: row;">
+        <button style="width:40%;" bindtap="handleInsertTrends">动态</button>
+        <button style="width:40%;" bindtap="handleMedia">上传照片</button>
+      </view>
+    </view>
+
+  </view>
+
+
+  <!-- 动态显示：如果动态数据大于50条,默认显示前50条，点击展开显示全部，如果动态小于等于50条，默认显示近半年的动态，点击展开显示全部 -->
+  <view class="box">
+    <view wx:for="{{show == false ? trendList1:trends}}" wx:key="index" data-index="{{index}}" class="one">
+      <view style="margin-bottom: 60rpx;margin-top:40rpx;"> 
+        <view class="onedot"></view>
+        <view wx:if="{{index!=trends.length}}" class="oneline"></view>
+        <view class="onemain">
+          <!-- 上传时间 -->
+          <view style="display: flex;">
+            <view class="onemaintitle">
+              <text>{{item.uploadTime}}</text>
+              <text wx:if="{{item.age != null}}" style="font-size:28rpx;margin-left:10rpx;">{{item.age}}</text>
+            
+            </view>
+            <view class="click-item" style="width: 37%;margin-left:10rpx;" bindtap="handleTrends" data-trendId="{{item.trendId}}"></view>
+          </view>
+
+          
+          <!-- media层 -->
+          <view class="media">
+            <!-- 视频层 -->
+            <view class="video-list" wx:if="{{item.trendVideo != null && item.trendVideo != ''}}"  data-id="{{index}}">
+              <!-- 视频 -->
+              <video src="{{item.trendVideo}}"  autoplay='true' wx:if="{{_index == index}}" play-btn-position="center" style="height:{{item.height}}rpx;"/>
+
+              <!-- 视频缩略图 -->
+              <view wx:else class="video-box" bindtap="play" data-id="{{index}}" style="height:{{item.height}}rpx;">
+                <view class="video-cover-box" style="background-color: black;height:{{item.height}}rpx;">
+                  <image class="video-cover-image" src="{{item.coverImage}}" mode="aspectFit" style="height:{{item.height}}rpx"></image>
+                </view>
+                <!-- 播放按钮 -->
+                <image class="video-image-play" src="/image/begin.jpeg" mode="scaleToFill" style="width:66rpx;height:66rpx;position: relative;left:42%;top:-390rpx;border-radius: 50%;"></image>
+              </view> 
+                   
+            </view>
+
+             <!-- 图片层 -->
+            <view class="image-list" wx:if="{{item.trendPhoto != null && item.images.length>0}}" >
+              <image src="{{image}}"  wx:for="{{item.images}}" wx:key="index" wx:for-item="image" wx:for-index="childIndex" data-bigIndex="{{index}}" data-small="{{childIndex}}"  bindtap="clickImage" style="height:{{item.height}}rpx;width:{{item.width}};"/>
+
+             
+            </view>
+
+          </view>
+
+
+          <!-- 内容和照片视频 -->
+          <view class="cont-item" bindtap="handleTrends" data-trendId="{{item.trendId}}">
+            <view class="trendCont" wx:if="{{item.trendContent !='' && item.trendContent !=null}}" >
+              <rich-text nodes="{{item.trendContent}}"/>
+            </view>   
+
+            <!-- 身份和具体时间 -->
+            <view class="other-item">
+              <text>{{item.identity}}，</text>
+              <text>{{item.createTime}}</text>
+            </view>
+
+          </view>
+          
+          
+
+          <!-- 评论信息 -->
+          <view style="background-color: white;">
+            <!-- 点击弹出评论框 -->
+            <view >
+              <image data-index="{{index}}" src="../index/image/comment.png" style="width:60rpx;height:54rpx;float: right;top:-75rpx;position: relative;z-index:100;" bindtap="onCommentTrend"/>
+            </view>
+
+
+            <!-- 评论显示 -->
+            <view class="discuss" wx:if="{{item.discusses.length>0}}">
+              <image src="/image/res.jpg"/>
+              <tree data-index="{{index}}" discussArr="{{item.discusses}}" bind:resEvent="clickResponse"></tree>
+            
+            </view>
+          </view>
+          
+
+        </view>
+      </view>
+
+
+      <!-- 分割线：点击展开 -->
+      <view class="left-item-modal">
+        <view wx:if="{{trends.length>trendList1.length && !show && index == trendList1.length-1}}" class="develop" bindtap="clickDevelop" >
+          <view class="diver"></view>
+          <view style="width:50%;color: #a19e9e;font-size:30rpx;text-align: center;">点击展开，显示更多</view>
+          <view class="diver"></view>
+        </view>
+
+        <!-- 点击收起 -->
+        <view wx:if="{{trends.length>trendList1.length && show && index == trendList1.length-1}}" class="left-over" bindtap="clickPackup" style="margin-bottom: 20rpx;">
+          <view class="diver"></view>
+          <view style="color: #a19e9e;width:24%;text-align: center;">点击收起</view>
+          <view class="diver"></view>
+        </view>
+      </view>
+
+
+    
+    </view>
+
+
+    
+  </view>
+
+
+
+
+
+
+  <!-- 点击评论弹出键盘  -->
+  <view class="keyword" wx:if="{{responseFocus}}" style="margin-bottom: {{keywordHeight}}rpx;">
+    <!-- 点击评论区界面可隐藏 -->
+    <view class="keyword_screen" bindtap="hideKeyword"></view>
+    <!-- 输入框 -->
+    <view class="keyword-item">
+      <textarea class="textarea" placeholder="{{placeholder}}" focus="{{responseFocus}}"   bindinput="responseInput" value="{{inputValue}}"/>
+    </view>
+    <!-- 表情包 -->
+    <view class="keyword-item-img" bindtap="clickShowEmoji">
+      <image src="../trends/images/emji.jpg"/>
+    </view>
+    <!-- 发送按钮 -->
+    <view class="res-btn" bindtap="saveResponse">发送</view>
+   
+
+  </view>
+
+
+
+   <!-- 表情包 -->
+   <view class="emoji_item" wx:if="{{showEmoji}}" style="position: relative;z-index: 2000;">
+    <!-- 点击非表情包界面可隐藏 -->
+    <view class="emoji_screen" bindtap="hideEmoji"></view>
+    <emoji bind:emojiEvent="clickChooseEmoji" height="{{keywordHeight}}"></emoji>
+  </view>
+
+
+
+  <!-- 视频自动播放的参照节点 -->
+  <view class="relativeView"></view>
+
+
+</view>
+
+
+
+<!-- 子组件：选择宝宝页面 -->
+<view class="content-baby" wx-if="{{!showBaby}}">
+  <baby id="baby" bind:clickEvent="clickShowIndex"></baby>
+</view>

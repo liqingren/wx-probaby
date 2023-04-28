@@ -1,0 +1,37 @@
+<!--pages/tags/tags.wxml-->
+<view class="tag">
+  <!-- 标头：是否是第一次 -->
+  <view class="title">
+    <checkbox-group bindchange="changeCheckbox">
+      <checkbox checked="true" value="{{checked}}"/>
+      <text style="font-size:38rpx;">第一次</text>
+    </checkbox-group>
+    
+    
+  </view>
+
+  <!-- 输入标签 -->
+  <view class="tag-item">
+    <input type="text" value="{{checkedTag}}" placeholder="请输入" bindinput="tagInput"/>
+  </view>
+
+  <!-- 显示已有标签 -->
+  <view class="show">
+    <view wx:for="{{show == true ?tags:tagsList}}" wx:key="index" data-index="{{index}}"  class="{{item.checked ? 'active' : ''}}" bindtap="tagsSwitch">
+      <text>{{item.content}}</text>
+    </view>
+
+    <view wx:if="{{tags.length>10 && !show}}" bindtap="clickShowAll">
+      <text>更多 </text>
+      <text style="font-size: 34rpx;color:#aeaeae;">∨</text>
+    </view>
+  </view>
+
+  <!-- 保存和取消 -->
+  <view class="save">
+    <button class="btn-save" bindtap="handleSaveTag">确定</button>
+    <button class="exit" bindtap="handleExit">取消</button>
+  </view>
+
+
+</view>

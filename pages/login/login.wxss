@@ -1,0 +1,25 @@
+/* pages/login/login.wxss */
+.content{
+  margin-top:80rpx;
+}
+.wechat image{
+   border-radius: 50%;
+   width:30%;
+   height:90px;
+   position: relative;
+   left:34%
+}
+.wechat view{
+  text-align: center;
+  color:#333;
+}
+.register{
+  display: flex;
+  flex-direction: row;
+}
+.register view{
+  margin:0 auto;
+  margin-top:80rpx;
+  font-size:40rpx;
+  color:#333;
+}

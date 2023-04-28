@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+<view class="content">
+  <!-- 微信登录 -->
+  <view class="wechat">
+    <image src="../login/image/wechat1.png"></image>
+    <view>微信快速登录</view>
+  </view>
+  <!-- 登录按钮 -->
+  <button type="primary" class="loginBtn" bindtap="login"
+  style="background-color: #ff9933;width:86%;margin-top:40rpx;">登录</button>
+
+
+
+  <!-- 注册导航 -->
+  <view class="register">
+    <view>
+      <navigator open-type="navigate" url="../phoneLogin/phoneLogin">手机号登录</navigator>
+    </view>
+
+  </view>
+</view>

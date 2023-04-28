@@ -1,0 +1,46 @@
+<!--pages/register/register.wxml-->
+<view class="content">
+<!-- 手机号 -->
+  <view class="username">
+    <view class="title">手机号：</view>
+    <view class="userid">
+      <input type="number" placeholder="请输入手机号" maxlength="11" bindinput="phoneInput"/>
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+  <!-- 密码 -->
+  <view class="username">
+    <view class="title">密码：</view>
+    <view class="userid">
+      <input type="text" password="{{!open}}" placeholder="请输入密码（至少六位）" bindinput="passwordInput"/>
+    </view>
+    <image src="../register/image/no_eye.gif" wx:if="{{!open}}" style="width:34px;height:22px;" bindtap="showPass"></image>
+    <image src="../register/image/eye.gif" wx:else="{{open}}" style="width:34px;height:22px;" bindtap="showPass"></image>
+
+  </view>
+  
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+  <!-- 昵称 -->
+  <view class="username">
+    <view class="title">昵称：</view>
+    <view class="userid">
+      <input type="text" placeholder="请输入昵称" bindinput="nicknameInput"/>
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="hr">  
+  </view>
+  <!-- 注册按钮 -->
+  <view class="register">
+    <button  class="registerBtn" bindtap="register" disabled="{{registerBtnState}}"
+    style="background-color: #ff9933;width:40%;margin-top:40rpx;color:white;">注册</button>
+
+    <button class="loginBtn" bindtap="returnLogin"
+    style="background-color: #0099cc;width:40%;margin-top:40rpx;color:white;">返回登录</button>
+  </view>
+
+</view>

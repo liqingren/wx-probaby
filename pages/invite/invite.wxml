@@ -1,0 +1,20 @@
+<!--pages/invite/invite.wxml-->
+<!-- 邀请：显示出宝宝的信息（小名、年龄），邀请二维码 -->
+<view class="invite">
+    <!-- 画布：宝宝头像：昵称、年龄，邀请二维码 -->
+  <view style="margin-top:60rpx;">
+    <canvas id="code-canvas" type="2d" style="width:90%;height:1000rpx;margin:0 auto;background-color: white;"></canvas>
+  </view>
+  
+    
+  <!-- 保存至相册 -->
+  <view class="save">
+    <view style="border: 1rpx solid #ccc8c8;border-style: none solid none none;"  bindtap="clickSaveLocal">保存至相册</view>
+    <button bindtap="handleShareCode">分享二维码</button>
+  </view>
+
+  
+
+
+
+</view>

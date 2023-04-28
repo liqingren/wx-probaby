@@ -1,0 +1,51 @@
+/* pages/record/record.wxss */
+page{
+  background-color: #f2f2f2;
+  margin-top:10rpx;
+}
+.add{
+  width:140rpx;
+  height:140rpx;
+  background-color: white;
+  text-align: center;
+  margin:0 auto;
+  border-radius: 50%;
+  position: relative;
+  top:10rpx;
+}
+.add image{
+  margin:20rpx 0 -10rpx -10rpx;
+  width:50rpx;
+  height:50rpx;
+}
+.add view{
+  text-align: center;
+  font-size: 38rpx;
+}
+.info{
+  width:100%;
+  height:220rpx;
+  background-color: white;
+  margin-top:4rpx;
+  padding-left:40rpx;
+}
+.info text{
+  position: relative;
+  top:10rpx;
+  color:#aeaeae;
+  font-size: 30rpx;
+}
+.detail view{
+  float: left;
+  width:50%;
+  height:70rpx;
+  line-height: 70rpx;
+  position: relative;
+  top:20rpx;
+}
+.detail view text{
+  color:black;
+  margin-left:22rpx;
+  position: relative;
+  top:0;
+}

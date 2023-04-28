@@ -1,0 +1,198 @@
+<!--pages/detailtrend/detailtrend.wxml-->
+<!-- 显示社区动态详细信息 -->
+<view class="detail-trend">
+  <!-- 发布者头像、昵称,是否关注 -->
+  <view class="user-info">
+    <!-- 头像昵称 -->
+    <image wx:if="{{trend.userPhoto != null}}" src="{{trend.userPhoto}}"/>
+    <image wx:else src="../my/image/default.png"></image>
+    <view>{{trend.username}}</view>
+    <text>宝宝{{trend.baby.age}}</text>
+      
+    <!-- 关注 -->
+    <view class="follow" bindtap="followUser" wx:if="{{followed == 'false' && trend.userId != userId}}">关注</view>
+    <view class="followed" wx:if="{{followed == 'true' && trend.userId != userId}}" bindtap="onFollowUser">已关注</view>
+    <view class="follow" wx:if="{{trend.userId == userId}}" style="border:none;font-size:44rpx;" bindtap="clickShowOper">...</view>
+  </view>
+
+  <!-- 动态的内容 -->
+  <view class="content">
+    <!-- 内容 -->
+     <view class="cont-item"  wx:if ="{{trend.trendContent != null && trend.trendContent != ''}}">
+      <rich-text nodes="{{trend.trendContent}}"/>
+      </view>
+
+  </view>
+
+  <!-- 动态的照片或视频 -->
+  <view class="media" style="height: {{maxMediaHeight}}rpx;">
+    <image wx:if="{{trend.images.length>0}}" wx:for="{{trend.images}}" wx:key="index" data-index="{{index}}" src="{{item}}" bindtap="clickImage"  style="height:{{trend.height}}rpx;width:{{trend.width}}"/>
+
+    <!-- 显示视频 -->
+    <video wx:if="{{trend.trendVideo != null}}" src="{{trend.trendVideo}}" autoplay="true" play-btn-position="center" bindtap="clickVideo" style="width:94%;"/>
+  
+  </view>
+
+  <!-- 标签 -->
+  <view class="tags" wx:if="{{trend.tags.length>0}}">
+    <view wx:for="{{trend.tags}}" wx:key="index" >
+      <text>#{{item.content}}</text>
+    </view>
+  </view>
+
+
+  <!-- 上传时间 -->
+  <view class="create-time">
+    <view>{{trend.createTime}}</view>
+    <view  style="display: flex;margin-left:300rpx;" wx:if="{{trend.likes.length>0}}">
+      <view>
+        <image src="/image/09.png" style="width:56rpx;height:44rpx;"/>
+      </view>
+      <view>
+        {{trend.likes.length}} 赞
+      </view>
+    </view>
+    
+  </view>
+
+  <view style="width:95%;height:20rpx;background-color: #f2f2f2;margin-top:20rpx;margin-bottom: 20rpx;opacity: 0.8;">
+    
+  </view>
+
+ 
+
+  <!-- 评论信息 -->
+  
+  <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{locate}}">
+    <view id="comment" class="comment-info"  wx:if="{{comments.length>0}}"> 
+      <view style="margin-bottom: 5rpx;">所有评论 {{trend.commentCount}}</view>
+      <view class="comment">
+        <z-tree data-index="{{index}}" commentArr="{{comments}}" trend_userId="{{trend.userId}}" bind:resEvent="clickResponse" bind:comEvent="clickMultResponse"></z-tree>
+      </view>
+    </view>
+  </scroll-view>
+   
+  
+
+  <!-- 底部固定：用户评论、点赞、收藏 -->
+  <view class="comment-release">
+    <view style="background-color: #f2f2f2;height:80rpx;border-radius: 10rpx;margin-left:20rpx;margin-top:10rpx;">
+      <textarea placeholder="写评论" bindtap="clickComment"/>
+    </view>
+
+    <!-- 收藏 -->
+    <view>
+      <image wx:if="{{trend.collected}}" src="/image/07.png" bindtap="onClickCollected"/>
+      <image wx:else src="/image/08.png" bindtap="clickCollected"/>
+    </view>
+
+    <!-- 点赞 -->
+    <view>
+      <image wx:if="{{trend.liked}}" src="/image/09.png" bindtap="onClickLiked"/>
+        <image wx:else src="/image/10.jpg"  bindtap="clickLiked" />
+        
+    </view>
+    
+  </view>
+
+
+
+
+  <!-- 操作界面：回复或删除评论 -->
+  <view class="screen">
+    <!-- 屏幕背景变暗的背景  -->
+    <view class="commodity_screen" bindtap="hideComtModal" wx:if="{{showMiniStatus}}"></view>
+    <!-- 弹出框  -->
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showMiniStatus}}" style="height:{{height}}rpx">
+
+      <!-- 内容 -->
+      <view class="item" wx:if="{{show}}">
+        <view bindtap="navigateComment" class="oper" wx:if="{{comment.userId != userId}}">
+          <text>回复 </text>
+          <text style="color: #929191;font-size: 32rpx;">{{comment.username}}</text>
+        </view>   
+
+        <!-- 分割线 -->
+        <view class="hr" wx:if="{{comment.userId != userId}}">    
+        </view>
+
+        <view bindtap="clickDeleteComment" class="oper">
+          <text>删除评论</text>
+        </view>
+
+      </view>
+
+      <!-- 内容 -->
+      <view class="item" wx:if="{{!show}}">
+        <view wx:if="{{comment.userId != userId}}"  bindtap="navigateComment" class="oper">
+          <text>回复 </text>
+          <text style="color: #929191;font-size: 32rpx;">{{comment.username}}</text>
+        </view>   
+
+        <!-- 分割线 -->
+        <view wx:if="{{comment.userId != userId}}"  class="hr">    
+        </view>
+
+        <view wx:if="{{comment.userId == userId}}"  bindtap="clickDeleteComment" class="oper">
+          <text>删除评论</text>
+        </view>
+
+      </view>
+
+
+      <view class="oper-exit">
+        <!-- 分割线 -->
+        <view class="hr">
+          
+        </view>
+
+        <view class="exit" bindtap="clickExit">
+          <text>取消</text>
+        </view>
+      </view>
+      
+
+
+     
+
+    </view>
+
+  </view>
+
+
+  <!-- 如果是动态是本人发布的，且点击“...”则会显示操作框 -->
+  <view class="screen_oper">
+    <!--屏幕背景变暗的背景  -->
+    <view class="commodity_screen_oper" bindtap="hideModal" wx:if="{{showOperStatus}}"></view>
+    <!--弹出框  -->
+    <view animation="{{animationData}}" class="oper_box" wx:if="{{showOperStatus}}">
+       <!-- 标题 -->
+      <view class="title">
+        <text>其他操作</text>
+      </view>
+
+      <!-- 内容 -->
+      <view class="item">
+        <view  bindtap="clickDeleteTrend">
+          <image src="/image/delete.png"/>
+          <text>删除</text>
+        </view>
+
+        <view bindtap="clickEdit">
+          <image src="/image/edit.png"/>
+          <text>编辑</text>
+        </view>
+      </view>
+
+    
+
+      <!-- 取消 -->
+      <view class="exit" bindtap="clickHideOper">
+        <view>取消</view>
+      </view>
+
+    </view>
+  </view>
+
+
+</view>

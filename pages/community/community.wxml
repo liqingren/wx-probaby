@@ -1,0 +1,91 @@
+<!--pages/community/community.wxml-->
+<!-- 社区 -->
+<view class="community">
+  <!-- 帖子 -->
+  <view class="post" wx:for="{{trends}}" wx:key="index">
+    <view class="user-info" data-index="{{index}}"  bindtap="clickDeatil">
+      <!-- 头像昵称 -->
+      <image wx:if="{{item.userPhoto != null}}" src="{{item.userPhoto}}"/>
+      <image wx:else src="../my/image/default.png"></image>
+      <view>{{item.username}}</view>
+      <text>宝宝 {{item.baby.age}}</text>
+      
+    </view>
+
+    <view class="user-follow">
+      <!-- 关注 -->
+      <view class="follow" bindtap="followUser" data-index="{{index}}" wx:if="{{!item.followed && item.userId != userId}}">关注</view>
+      <view class="followed" data-index="{{index}}" bindtap="onFollowUser" wx:elif="{{item.followed && item.userId != userId}}">已关注</view>
+      <view class="follow" wx:elif="{{item.userId == userId}}" style="border:none">本人</view>
+    </view>
+
+    <!-- 内容 -->
+    <view class="content">
+      <!-- content -->
+      <view class="cont-item"  wx:if ="{{item.trendContent != null && trend.trendContent != ''}}" data-index="{{index}}"  bindtap="clickDeatil">
+        <rich-text nodes="{{item.trendContent}}"/>
+      </view>
+
+
+      <!-- 图片或视频 -->
+      <view class="media">
+        
+        <!-- 图片 -->
+        <image class="media-image" wx:if="{{item.images.length>0}}" wx:for="{{item.images}}" wx:key="index" wx:for-item="image" wx:for-index="childIndex" data-bigIndex="{{index}}" data-small="{{childIndex}}" src="{{image}}" bindtap="clickImage" style="height:{{item.height}}rpx;width:{{item.width}}"/>
+
+
+        <!-- 视频图片层 -->
+        <view class="video-list" wx:if="{{item.trendVideo != null && item.trendVideo != ''}}"  data-id="{{index}}">
+          <!-- 视频 -->
+          <video src="{{item.trendVideo}}"  autoplay='true' wx:if="{{_index == index}}" play-btn-position="center" style="width:98%;margin-bottom: 50rpx;height:500rpx;"/>
+
+          <!-- 视频缩略图 -->
+          <view wx:else class="video-box" bindtap="play" data-id="{{index}}">
+            <view class="video-cover-box" style="background-color: black;width:98%;height:500rpx;">
+              <image class="video-cover-image" src="{{item.coverImage}}" mode="aspectFit" style="height:500rpx;width:98%;"></image>
+            </view>
+            <!-- 播放按钮 -->
+            <image class="video-image-play" src="/image/begin.jpeg" mode="scaleToFill" style="width:70rpx;height:70rpx;position: relative;left:42%;top:-290rpx;border-radius: 50%;"></image>
+          </view> 
+                
+        </view>
+
+      </view>
+      
+    </view>
+
+    <!-- 评论点赞 -->
+    <view class="comment">
+      <!-- 收藏 -->
+      <view>
+        <image wx:if="{{item.collected}}" src="/image/07.png"  data-index="{{index}}" bindtap="onClickCollected"/>
+        <image wx:else src="/image/08.png"  data-index="{{index}}" bindtap="clickCollected"/>
+        <text wx:if="{{item.collects.length>0}}">{{item.collects.length}}</text>
+        <text wx:else>收藏</text>
+      </view>
+      <!-- 评论 -->
+      <view data-index="{{index}}"  bindtap="clickDeatil">
+        <image src="/image/11.jpg"/>
+        <text wx:if="{{item.comments.length>0}}">{{item.commentCount}}</text>
+        <text wx:else>评论</text>
+      </view>
+      <!-- 点赞 -->
+      <view>
+        <image wx:if="{{item.liked}}" src="/image/09.png" bindtap="onClickLiked" data-index="{{index}}"/>
+        <image wx:else src="/image/10.jpg"  bindtap="clickLiked" data-index="{{index}}"/>
+        <text wx:if="{{item.likes.length>0}}">{{item.likes.length}}</text>
+        <text wx:else bindtap="clickLikeed">点赞</text>
+      </view>
+     
+      
+    </view>
+
+    <!-- 分割线 -->
+    <view class="hr">
+      
+    </view>
+    
+  </view>
+
+  <view class="relativeView"></view>
+</view>

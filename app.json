@@ -1,0 +1,71 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/community/community",
+    "pages/my/my",
+    "pages/record/record",
+    "pages/bigevent/bigevent",
+    "pages/relative/relative",
+    "pages/phoneLogin/phoneLogin",
+    "pages/profile/profile",
+    "pages/babyinfo/babyinfo",
+    "pages/addbaby/addbaby",
+    "pages/addrecord/addrecord",
+    "pages/trends/trends",
+    "pages/addtrends/addtrends",
+    "pages/edittrend/edittrend",
+    "pages/detailtrend/detailtrend",
+    "pages/tags/tags",
+    "pages/comment/comment",
+    "pages/likes/likes",
+    "pages/collects/collects",
+    "pages/follows/follows",
+    "pages/relative-temp/temp",
+    "pages/invite/invite",
+    "pages/invitation/invitation",
+    "pages/invited/invited",
+    "pages/retrieve/retrieve"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#ff9900",
+    "navigationBarTitleText": "宝宝成长记录",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#ff9900",
+    "borderStyle":"black",
+    "list":[
+      {
+        "text":"亲宝宝",
+        "pagePath": "pages/index/index",
+        "iconPath": "/image/02.jpg",
+        "selectedIconPath": "/image/01.jpg"
+      },
+      {
+        "text":"社区",
+        "pagePath": "pages/community/community",
+        "iconPath": "/image/04.png",
+        "selectedIconPath": "/image/03.png"
+      },
+      {
+        "text":"我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "/image/06.png",
+        "selectedIconPath": "/image/05.png"
+      }
+
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "z-tree":"/component/tree-response/tree",
+    "d-tree":"/component/tree-discuss/d-tree",
+    "tree":"/component/tree-dis/tree",
+    "emoji":"/component/emoji/emoji",
+    "baby":"/component/baby/baby"
+  }
+}

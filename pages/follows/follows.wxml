@@ -1,0 +1,49 @@
+<!--pages/follows/follows.wxml-->
+<!-- 关注 -->
+<view class="follows">
+  <!-- 显示已关注的用户 -->
+  <view wx:if="{{users.length>0}}" wx:for="{{users}}" wx:key="index" data-index="{{index}}" >
+    <view class="user-info">
+      <!-- 头像昵称 -->
+      <image wx:if="{{item.userPhoto != null}}" src="{{item.userPhoto}}"/>
+      <image wx:else src="../my/image/default.png"></image>
+      <view>{{item.username}}</view>
+
+      <!-- 关注 -->
+      <view class="follow" bindtap="onFollowUser" data-index="{{index}}">取消关注</view>
+
+
+      <!-- 城市 -->
+      <view class="user-city">
+        <view>城市：{{item.city}}</view>
+      </view>
+
+      <!-- 性别 -->
+      <view class="user-sex">
+        <view wx:if="{{item.userSex == true}}">
+          <image src="/image/male.png"/>
+        </view>
+        <view wx:elif="{{item.userSex == false}}">
+          <image src="/image/famale.png"/>
+        </view>
+        <view  wx:elif="{{item.userSex == null}}">
+          <image src="/image/neutral.png"/>
+        </view>
+      </view>
+
+      
+    </view>
+
+    <!-- 分割线 -->
+    <view class="hr">
+        
+      </view>
+    
+  </view>
+
+  <view wx:if="{{users.length<=0}}" style="width:45%;position: absolute;left:34%;top:8%;font-size: 44rpx;color: #aeaeae;">
+    <view>
+      还未关注用户
+    </view>
+  </view>
+</view>

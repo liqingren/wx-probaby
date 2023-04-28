@@ -1,0 +1,25 @@
+.discuss-content{
+  height:max-content;
+  width:200%;
+}
+.discuss-first-item{
+  padding-top:10rpx;
+}
+.discuss .discuss-first-item{
+  width:90%;
+  height:120rpx;
+  border:1rpx solid #e5e2e2;
+  border-style:solid none none none;
+}
+.discuss-first-item .cont-1{
+  margin-top:10rpx;
+}
+
+.discuss-last-item{
+  width:90%;
+  height:120rpx;
+  padding-top:20rpx;
+  border:1rpx solid #e5e2e2;
+  border-style:solid none none none;
+
+}

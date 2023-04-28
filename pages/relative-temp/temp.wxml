@@ -1,0 +1,13 @@
+<!-- 与宝宝的关系 -->
+<view>
+  <view wx:for="{{relativeArr}}" wx:key="index" data-index="{{index}}">
+    <!-- 分割线 -->
+    <view class="hr">
+      
+    </view>
+    <!-- 值 -->
+    <view class="rela-item"  data-index="{{index}}" bindtap="clickRelative">{{item.val}}</view>
+    
+  </view>
+  
+</view>
