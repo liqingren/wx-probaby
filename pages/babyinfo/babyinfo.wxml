@@ -2,14 +2,14 @@
 <view class="content">
    <!-- 背景图 -->
    <view class="img">
-    <image src="/pages/index/image/bg.jpg" style="width:100%;height:160px;"></image>
+    <image src="/pages/index/image/bg.jpg" style="width:100%;height:400rpx;"></image>
   </view>
 
 
 
   <!-- 头像 -->
   <view class="head"  bindtap="upload">
-    <image wx:if="{{baby.babyPhoto === null}}" src="/image/default.jpg"></image>
+    <image wx:if="{{baby.babyPhoto == null}}" src="/image/default.jpg"></image>
     <image wx:else src="{{baby.babyPhoto}}"></image>
     <text>{{age}}</text>
   </view>
@@ -27,11 +27,10 @@
 
     <!-- 性别 -->
     <view class="detail">
-      <picker class="section_picker" bindchange="bindSexChange" value="{{baby.babySex}}" range="{{array}}">
+      <picker class="section_picker" bindchange="bindSexChange" value="{{arrayIndex}}" range="{{array}}">
         <text>性别</text>
         <text class="picker_sex" wx:if="{{baby.babySex === null}}">未填写</text>
-        <text class="picker_sex" wx:elif="{{baby.babySex === true}}" style="left:64%">男</text>
-        <text class="picker_sex" wx:elif="{{baby.babySex === false}}" style="left:64%">女</text>
+        <text class="picker_sex" wx:else style="left:64%">{{array[arrayIndex]}}</text>
         <text class="delimiter">></text>
       </picker>
     </view>
@@ -52,7 +51,7 @@
       <picker class="section_picker" bindchange="bindBloodChange" value="{{index}}" range="{{blood}}">
         <text>血型</text>
         <text class="picker_blood" wx:if="{{baby.babyBlood === null}}">未填写</text>
-        <text class="picker_blood" wx:else style="left:60%">{{baby.babyBlood}}</text>
+        <text class="picker_blood" wx:else style="left:60%">{{blood[index]}}</text>
         <text class="delimiter">></text>
       </picker>
     </view>

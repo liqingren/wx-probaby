@@ -8,9 +8,11 @@ Page({
    */
   data: {
     baby:{},//宝宝信息
-    array:['男','女'],//性别
+    array:['女','男'],//性别
+    arrayIndex:0,//性别下标
     birth:null,//生日
-    blood:['O型','A型','B型','AB型','其他'],//血型
+    blood:[],//血型
+    index:0,//血型下标
     moment:null,//时刻
     age:null,//年龄
     babyId:'',//宝宝id
@@ -36,15 +38,10 @@ Page({
    * @param {*} e 
    */
   bindSexChange:function(e){
-    if(e.detail.value == '0'){
-      this.setData({
-        'baby.babySex': true
-      })
-    }else if(e.detail.value == '1'){
-      this.setData({
-        'baby.babySex': false
-      })
-    }
+    this.setData({
+      'baby.babySex':parseInt(e.detail.value),
+      arrayIndex:e.detail.value
+    })
   },
 
     /**
@@ -66,6 +63,7 @@ Page({
     var index = e.detail.value;
     var blood = this.data.blood;
     this.setData({
+      index:index,
       'baby.babyBlood': blood[index]
     })
   },
@@ -169,18 +167,29 @@ Page({
     if(this.data.babyId != undefined && this.data.babyId != ''){
       postParamsRequest("/baby/getbaby",{babyId:this.data.babyId})
       .then((value) =>{
-        const {data} = value;     
+        const {data} = value; 
+        let baby = data.baby;
+        let bloods = data.bloods; //血型
         let age = '';
-        if(data.babyBirth !== null){
-          age = getAge(data.babyBirth,new Date());
+        if(baby.babyBirth !== null){
+          age = getAge(baby.babyBirth,new Date());
+        }
+        for(var i=0;i<bloods.length;i++){
+          if(baby.babyBlood === bloods[i]){
+            this.setData({
+              index:i
+            })
+          }
         }
         this.setData({
-          baby:data,
-          birth:data.babyBirth,
-          moment:data.babyMoment,
+          baby:baby,
+          blood:bloods,
+          arrayIndex:Number(baby.babySex),//下标（true:1,false:0）
+          birth:baby.babyBirth,
+          moment:baby.babyMoment,
           age:age
         })
-        wx.setStorageSync('baby', data);
+        wx.setStorageSync('baby', baby);
           
       })
     }

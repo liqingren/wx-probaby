@@ -2,7 +2,7 @@
 <view class="content" wx:if="{{showBaby}}">
   <!-- 背景图 -->
   <view class="img">
-    <image src="/pages/index/image/bg.jpg" style="width:100%;height:380rpx;"></image>
+    <image src="/pages/index/image/bg.jpg" style="width:100%;height:400rpx;"></image>
   </view>
 
   <!-- 导航 -->
