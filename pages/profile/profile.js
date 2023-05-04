@@ -1,5 +1,5 @@
 // pages/profile/profile.js
-import {postRequest} from '../../utils/request'
+import {postParamsRequest, postRequest} from '../../utils/request'
 Page({
 
   /**
@@ -7,13 +7,14 @@ Page({
    */
   data: {
     user:{},//用户信息
-    upUser:{},//修改后的用户信息
-    array:['男','女'],//性别
+    array:['女','男'],//性别
     index:0,//性别下标
-    region: ['北京', '北京'],//地区默认值
-    customItem: '全部',//地区的第一个值
-    regionFlag:false,//判断地区是否被修改
     birth:null,//生日
+    multRegion:[],//当前省市
+    province:[],//省
+    city:[],//市区
+    region:[],//地区
+    multIndex:[0,0],//下标
   },
 
   /**
@@ -23,7 +24,6 @@ Page({
     if(e.detail.value !== '' && e.detail.value !== null){
       this.setData({
         'user.username':e.detail.value,
-        'upUser.username':e.detail.value
       })
     }
   },
@@ -33,18 +33,10 @@ Page({
    * @param {*} e 
    */
   bindPickerChange: function (e) {
-    if(e.detail.value == '0'){
-      this.setData({
-        'user.userSex': true,
-        'upUser.userSex':true
-      })
-    }else if(e.detail.value == '1'){
-      this.setData({
-        'user.userSex': false,
-        'upUser.userSex':false
-      })
-    }
-    
+    this.setData({
+      index:parseInt(e.detail.value),
+      'user.userSex':parseInt(e.detail.value),
+    })    
   },
 
 
@@ -55,85 +47,98 @@ Page({
   bindDateChange: function(e) {
     this.setData({
       'user.userBirth': e.detail.value,
-      'upUser.userBirth':e.detail.value,
       birth:e.detail.value
     })
   },
 
-    /**
-   * 地区选择器
+
+   /**
+   * 改变省
    * @param {*} e 
    */
-  bindRegionChange: function (e) {
-    if(e.detail.value != null){
-      let province = e.detail.value[0];
-      let city = e.detail.value[1];
-      let region = '';
-      //对省市做处理
-      if(province === '内蒙古自治区'){
-        province = '内蒙古';
-      }
-      if(province === '广西壮族自治区'){
-        province = '广西';
-      }
-      if(province === '西藏自治区'){
-        province = '西藏';
-      }
-      if(province === '宁夏回族自治区'){
-        province = '宁夏';
-      }
-      if(province === '新疆维吾尔自治区'){
-        province = '新疆';
-      }
-      if(province === '香港特别行政区'){
-        province = '香港';
-        if(city !=='全部'){
-          city = '香港';
-        }
-      }
-      if(province === '澳门特别行政区'){
-        province = '澳门';
-        if(city !=='全部'){
-          city = '澳门';
-        }
-      }
-      
-      if(province === '全部'){
-        province = '';
-        if(city === '全部'){
-          region = '';
-        }
-      }else{
-        province = province.substr(0,province.length-1);
-      }
-      if(city === '全部'){
-        city = '';
-      }
-      region = province + " "+city;
-      this.setData({
-        'user.userCity': region,
-        'upUser.userCity':region,
-        regionFlag:true
-      })
-      // console.log(region)
-    }
-    
+  multiPickerChange:function(e){
+    this.setData({
+      multIndex: e.detail.value,
+      'user.userCity':e.detail.value[0]+"-"+e.detail.value[1]
+    })
   },
 
+  /**
+   * 取消按钮：取消则显示原有的地区，若没有，则显示第一个
+   * @param {*} e 
+   */
+  multPickerCancelChange:function(e){
+    var user = this.data.user;
+    var region = this.data.region;
+    var multRegion = this.data.multRegion;
+    if(user.userCity != null && user.userCity != ''){
+      var multIndex = user.userCity.split("-");
+      multIndex[0] = parseInt(multIndex[0]);
+      multIndex[1] = parseInt(multIndex[1]);
+      this.setData({
+        multIndex:multIndex
+      })
+    }else{
+      var multIndex = [0,0];//初始下标
+      this.setData({
+        multIndex:multIndex
+      })
+    }
+    var children = region[this.data.multIndex[0]].children;
+    //省对应的所有市区
+    var city = [];
+    for(var j = 0;j<children.length;j++){
+      city.push(children[j].name)
+    }
+    multRegion[1] = city;
+    this.setData({
+      multRegion:multRegion
+    })
+  },
+
+
+  /**
+   * 改变市区
+   * @param {*} e 
+   */
+  multiPickerColumnChange:function(e){
+    var data = {
+      multRegion: this.data.multRegion,
+      multIndex: this.data.multIndex
+    };
+    data.multIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 0://第一列改变，省对应的市区改变
+        var index = data.multIndex[0];
+        var region = this.data.region;
+        var children = region[index].children;
+        var city = [];
+        for(var i =0;i<children.length;i++){
+          city.push(children[i].name)
+        }
+        data.multRegion[1] = city;
+        data.multIndex[1] = 0;
+        break;
+    }
+    this.setData(data)
+   
+  },
+
+  
   /**
    * 上传图片
    */
   upload:function(){
     let that = this;
-   wx.chooseMedia({
-    count: 1,
-    sizeType: ['original', 'compressed'],
-    sourceType: ['album', 'camera'],
-    success(res) {
-      // console.log("成功",res);
-      that.uploadImage(res.tempFiles[0].tempFilePath);
-    },
-   })
+    wx.chooseMedia({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // console.log("成功",res);
+        that.uploadImage(res.tempFiles[0].tempFilePath);
+      },
+    })
   },
 
   /**
@@ -149,8 +154,7 @@ Page({
         // console.log("上传成功",res)
         //获取文件路径
         this.setData({
-          'user.userPhoto':res.fileID,
-          'upUser.userPhoto':res.fileID
+          'user.userPhoto':res.fileID
         })
       },
       fail:err =>{
@@ -164,13 +168,7 @@ Page({
    * 保存修改
    */
   saveInfo:function(){
-    let user = this.data.user;
-    if(!this.data.regionFlag){
-      if(user.userCity === null || user.userCity === ''){
-        user.userCity = this.data.region[0]+" "+this.data.region[1];
-      }
-    }
-    postRequest('/user/update',this.data.upUser)
+    postRequest('/user/update',this.data.user)
     .then((value) =>{
       const {code,data,msg} = value;
       if(code === 200){
@@ -200,9 +198,46 @@ Page({
       this.setData({
         user:userInfo,
         birth:userBirth,
+        index:Number(userInfo.userSex),
         'upUser.userId':userInfo.userId
       })
     }
+    //获取所有的省市二级地区，并对当前用户的地区信息做处理（若没有地区，默认为省市的第一个，若有，则定位到当前的地区）
+    postParamsRequest("/region/listregion").then((value) =>{
+      const {data} = value;
+      var province = [];
+      var city = [];
+      var multIndex = '';
+      var children = '';
+      if(userInfo.userCity != null && userInfo.userCity != ''){
+        multIndex = userInfo.userCity.split("-");
+        multIndex[0] = parseInt(multIndex[0]);
+        multIndex[1] = parseInt(multIndex[1]);
+        children = data[multIndex[0]].children;
+        this.setData({
+          multIndex:multIndex
+        })
+      }else{
+        children = data[0].children;
+      }
+      //所有省
+      for(var i = 0 ;i<data.length;i++){
+        province.push(data[i].name)
+      }
+      //省对应的所有市区
+      for(var j = 0;j<children.length;j++){
+        city.push(children[j].name)
+      }
+      var list = [province,city];
+      this.setData({
+        region:data,
+        province:province,
+        city:city,
+        multRegion:list
+      })
+      
+    })
+
   },
 
   /**

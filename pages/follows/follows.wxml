@@ -15,7 +15,8 @@
 
       <!-- 城市 -->
       <view class="user-city">
-        <view>城市：{{item.city}}</view>
+        <view wx:if="{{item.userCity != null}}">城市：{{item.userCity}}</view>
+        <view wx:else>城市：未知</view>
       </view>
 
       <!-- 性别 -->

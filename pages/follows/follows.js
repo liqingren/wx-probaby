@@ -53,10 +53,6 @@ Page({
     postParamsRequest("/user/listfollow",{userId:user.userId})
     .then((value) =>{
       const {data} = value;
-      for(var i=0;i<data.length;i++){
-        var cities = data[i].userCity.split(" ");
-        data[i].city = cities[0];
-      }
       this.setData({
         users:data
       })
