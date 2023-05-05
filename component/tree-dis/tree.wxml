@@ -1,4 +1,4 @@
-<!-- 亲友的评论 -->
+<!-- index页面：亲友的评论 -->
 <view class="tree-discuss">
   <view wx:for="{{discussArr}}" wx:key="index">
     <view class="discuss" data-index="{{index}}" data-item="{{item}}">

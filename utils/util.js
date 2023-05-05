@@ -53,9 +53,8 @@ const formatNumber = n => {
   // 根据出生日期计算年龄周岁
 const getAge = (birth,nowDate) => {
   var date = new Date(formatDate(birth));
-  // console.log(date);
-  var returnAge = '';
-  var mouthAge = '';
+  var yearAge = '';
+  var monthAge = '';
   var dayAge = '';
   var birthYear = date.getFullYear();
   var birthMonth = date.getMonth()+1;
@@ -65,97 +64,78 @@ const getAge = (birth,nowDate) => {
   var nowMonth = d.getMonth() + 1;
   var nowDay = d.getDate();
   if (nowYear == birthYear) {
-    // returnAge = 0; //同年 则为0岁
+    // yearAge = 0; //同年 则为0岁
     var monthDiff = nowMonth - birthMonth; //月之差 
-    if (monthDiff < 0) {
-    }else {
-      if(monthDiff == 0){
-        mouthAge = '';
-      }else{
-        mouthAge = monthDiff + '个月';
+    var dayDiff = nowDay - birthDay;//天之差
+    if(monthDiff == 0){
+      if(dayDiff>0){
+        dayAge = dayDiff + '天';
+      }else if(dayDiff == 0){
+        yearAge = '刚出生';
       }
-      var dayDiff = nowDay - birthDay;
-      if(dayDiff <0){
-        if((monthDiff-1)>0){
-          mouthAge = monthDiff-1 + '个月';
-        }else{
-          mouthAge = '';
-        }   
-        dayAge = 30 + dayDiff + '天'; 
-      }else{
-        if(dayDiff == 0){
-          dayAge = '';
-        }else{
-          dayAge = dayDiff + '天';
+    }else if(monthDiff >0){
+      if(dayDiff == 0){
+        monthAge = monthDiff + '个月';
+      }else if(dayDiff>0){
+        monthAge = monthDiff + '个月';
+        dayAge = dayDiff + '天';
+      }else if(dayDiff<0){
+        if(monthDiff>1){
+          monthAge = monthDiff - 1 + '个月';
         }
+        dayAge = 30 + dayDiff + '天';
       }
     }
   } else {
     var ageDiff = nowYear - birthYear; //年之差
     if (ageDiff > 0) {
-      if (nowMonth == birthMonth) {
-        var dayDiff = nowDay - birthDay; //日之差 
-        if (dayDiff < 0) {
+      var monthDiff = nowMonth - birthMonth; //月之差 
+      var dayDiff = nowDay - birthDay;//天之差
+      if(monthDiff == 0){
+        if(dayDiff>0){
+          dayAge = dayDiff + '天';
+          yearAge = ageDiff + '岁';
+        }else if(dayDiff<0){
+          if(ageDiff>1){
+            yearAge = ageDiff - 1 + '岁';
+          }
+          monthAge = '11个月';
           dayAge = 30 + dayDiff + '天';
-          if((ageDiff - 1)>0){
-            returnAge = ageDiff - 1 + '岁';
-          }else{
-            mouthAge = '11个月';
-            returnAge = '';
-          }
-        } else {
-          if(dayDiff == 0){
-            dayAge = '';
-          }else{
-            dayAge = dayDiff + '天';
-          }
-          returnAge = ageDiff + '岁';
+        }else if(dayDiff == 0){
+          yearAge = ageDiff + '岁';
         }
-      } else {
-        var monthDiff = nowMonth - birthMonth; //月之差 
-        if (monthDiff < 0) {
-          var dayDiff = nowDay - birthDay; //天之差
-          if(dayDiff<0){
-            mouthAge = 12 + monthDiff - 1 + '个月';
-            dayAge = 30 + dayDiff + '天'; 
-          }else{
-            mouthAge = 12 + monthDiff + '个月';
-            if(dayDiff == 0){
-              dayAge = '';
-            }else{
-              dayAge = dayDiff + '天';
-            }
-            
+      }else if(monthDiff>0){
+        yearAge = ageDiff + '岁';
+        if(dayDiff>0){
+          dayAge = dayDiff + '天';
+          monthAge = monthDiff + '个月';
+        }else if(dayDiff<0){
+          if(monthDiff>1){
+            monthAge = monthDiff - 1 + '个月';
           }
-          if((ageDiff - 1)>0){
-            returnAge = ageDiff - 1 + '岁';
-          }else{
-            returnAge = '';
-          }
-        } else {
-          var dayDiff = nowDay - birthDay; //天之差
-          if(dayDiff<0){
-            dayAge = 30 + dayDiff + '天'; 
-          }else{
-            if(dayDiff == 0){
-              dayAge = '';
-            }else{
-              dayAge = dayDiff + '天';
-            }
-          }
-          if(monthDiff == 0){
-            mouthAge = '';
-          }else{
-            mouthAge = monthDiff + '个月';
-          }
-          returnAge = ageDiff + '岁';
+          dayAge = 30 + dayDiff + '天';
+        }else if(dayDiff == 0){
+          monthAge = monthDiff + '个月';
+        }
+      }else if(monthDiff<0){
+        if(ageDiff>1){
+          yearAge = ageDiff -1 + '岁';
+        }
+        if(dayDiff>0){
+          dayAge = dayDiff + '天';
+          monthAge = 12 + monthDiff + '个月';
+        }else if(dayDiff<0){
+          monthAge = 12 + monthDiff - 1 + '个月';
+          dayAge = 30 + dayDiff + '天';
+        }else if(dayDiff == 0){
+          monthAge = 12 + monthDiff - 1 + '个月';
         }
       }
     } else {
-      returnAge = -1; //返回-1 表示出生日期输入错误 晚于今天
+      yearAge = -1; //返回-1 表示出生日期输入错误 晚于今天
     }
   }
-  return returnAge + mouthAge + dayAge; //返回周岁年龄+月份
+  return yearAge + monthAge + dayAge; //返回周岁年龄+月份
 }
 
 

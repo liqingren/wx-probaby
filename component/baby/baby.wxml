@@ -28,7 +28,8 @@
         <view wx:if="{{item.nickname == null || item.nickname == ''}}">宝宝</view>
         <view wx:else>{{item.nickname}}</view>
         
-        <text wx:if="{{item.age != null && item.age != ''}}">{{item.age}}</text>
+        <text wx:if="{{item.age != null && item.age != '' && item.age != state}}">{{item.age}}</text>
+        <text  wx:elif="{{item.age == state}}" style="font-size: 28rpx;margin-left: 10rpx;color:#eeb763"> 宝宝出生第一天，从此与快乐相伴</text>
         <text wx:else></text>
       </view>
      

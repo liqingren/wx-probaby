@@ -216,7 +216,7 @@ page{
   z-index:1000;
   height:80rpx;
   display: flex;
-  padding:20rpx;
+  padding:20rpx 20rpx 30rpx 20rpx;
   justify-content: space-between;
   background-color: white;
 }

@@ -53,11 +53,12 @@
   <!-- 评论 -->
   <view class="comment" style="margin-bottom: {{keywordHeight}}rpx;">
     <view class="left">
-      <textarea class="text" placeholder-class="weui-input" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" adjust-position="false"  placeholder="{{placeholder}}" bindtap="bindReply" focus="{{releaseFocus}}" bindinput="responseInput" value="{{inputValue}}"/>
+      <textarea class="text" placeholder-class="weui-input" fixed="true" maxlength="-1" show-confirm-bar="false" auto-height="true" placeholder="{{placeholder}}" adjust-position="false" focus="{{releaseFocus}}" bindinput="responseInput" bindblur="bindCursorChange" value="{{discuss.content}}"/>
       <view class="line"/>
     </view>
     <view style="margin:10rpx 0 0 10rpx;position: relative;z-index:2000;" bindtap="clickShowEmoji">
-      <image class="emoji" src="../trends/images/emji.jpg"/>
+      <image wx:if="{{!showEmoji}}" class="emoji" src="../trends/images/emji.jpg"/>
+      <image wx:if="{{showEmoji}}" class="emoji" src="../trends/images/keyword.jpg"/>
     </view>
      <!-- 发送按钮 -->
      <view class="submit" bindtap="clickSaveDiscuss">发送</view>

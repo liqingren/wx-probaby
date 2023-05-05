@@ -2,7 +2,7 @@
   <!-- 写评论 -->
 <view class="comment">
   <view style="width: 90%;margin-bottom: 20rpx;">
-    <textarea id="comment-text" placeholder="{{placeholder}}" auto-height="true" focus="{{releaseFocus}}" maxlength="-1" bindinput="onCommentInput" value="{{comment.content}}" hold-keyboard="true"  style="padding:10rpx 0 10rpx 0;"/>
+    <textarea id="comment-text" placeholder="{{placeholder}}" auto-height="true" focus="{{releaseFocus}}" maxlength="-1" bindinput="onCommentInput" bindblur="bindCursorChange" show-confirm-bar="false" value="{{comment.content}}" hold-keyboard="true"  style="padding:10rpx 0 10rpx 0;"/>
   </view>
 
 
@@ -26,9 +26,7 @@
   <view class="emoji" wx:if="{{showEmoji}}" style="position: relative;z-index:1000;">
     <!-- 点击非表情包界面可隐藏 -->
     <view class="emoji_screen" bindtap="hideEmoji"></view>
-
     <emoji bind:emojiEvent="clickChooseEmoji" height="{{keywordHeight}}"></emoji>
-
     
   </view>
 </view>

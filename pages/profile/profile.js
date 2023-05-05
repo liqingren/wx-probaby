@@ -235,7 +235,6 @@ Page({
         city:city,
         multRegion:list
       })
-      
     })
 
   },

@@ -13,10 +13,10 @@ Page({
     discuss:{
       content:''
     },//亲友评论
+    cursor:0,//textarea光标位置
     releaseFocus:false,//输入框焦点
     showMiniStatus:null,//操作框状态
     placeholder:'说点什么，关爱一下',//评论输入框默认placeholder
-    inputValue:'',//评论输入框的值
     keywordHeight:0, //键盘高度
     showEmoji:false,//表情包状态
     animationData:'',//动画实例
@@ -151,6 +151,7 @@ Page({
    * @param {*} e 
    */
   bindReply: function (e) {
+    console.log(e)
     this.setData({
       releaseFocus: true,
       placeholder:'说点什么，关爱一下',
@@ -182,7 +183,41 @@ Page({
        'discuss.repUserId':discuss.userId,
        'discuss.repIdentity':discuss.identity
     })
-    // console.log(this.data.discuss);
+  },
+
+
+   /**
+   * 选择表情包（判断是在文字中间插入表情包还是在文字后面插入表情包）
+   */
+  clickChooseEmoji:function(e){
+    var emoji = e.detail;
+    var cont = this.data.discuss.content;//评论内容
+    var cursor = this.data.cursor;//光标位置
+    if(cont.length>0){
+      var prevStr = cont.substr(0,cursor);
+      var nextStr = cont.substr(cursor);
+      this.setData({
+        'discuss.content':prevStr+emoji.emoji+nextStr,
+      })
+      // console.log("光标前半部分："+prevStr+"，光标后半部分："+nextStr)
+    }else{
+      this.setData({
+        'discuss.content':cont+emoji.emoji,
+      })
+    }
+    this.setData({
+      cursor:cursor+emoji.emoji.length
+    })
+  },
+
+  /**
+   * 失去焦点时获取光标位置
+   * @param {*} e 
+   */
+  bindCursorChange:function(e){
+    this.setData({
+      cursor:e.detail.cursor
+    })
   },
 
 
@@ -193,8 +228,7 @@ Page({
     var val = e.detail.value;
     if(val != ''){
       this.setData({
-        'discuss.content':val,
-        'inputValue':val,
+        'discuss.content':val
       })
     }
   },
@@ -219,7 +253,6 @@ Page({
         'discuss.trendId':trend.trendId,
       })
     }
-    // console.log(this.data.discuss)
     var baby = wx.getStorageSync('baby');
     postRequest("/discuss/save",
     {
@@ -233,7 +266,6 @@ Page({
         trend.discusses.push(data);
         this.setData({
           trend:trend,
-          inputValue:'',
           'discuss.content':''
         })
         this.setData({
@@ -279,12 +311,17 @@ Page({
     var window = wx.getWindowInfo();
     var height = window.windowHeight - window.safeArea.top;
     this.setData({
-      showEmoji:!this.data.showEmoji,
       keywordHeight:height
     })
-    if(!this.data.showEmoji){
+    if(this.data.showEmoji){
       this.setData({
-        keywordHeight:0
+        releaseFocus:true,
+        showEmoji:false,
+      })
+    }else{
+      wx.hideKeyboard();
+      this.setData({
+        showEmoji:true
       })
     }
   },
@@ -300,18 +337,6 @@ Page({
     })
   },
 
-
-  /**
-   * 选择表情包
-   * @param {*} e 
-   */
-  clickChooseEmoji:function(e){
-    var cont = this.data.discuss.content;
-    this.setData({
-      'discuss.content':cont+e.detail.emoji,
-      inputValue:cont+e.detail.emoji,
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -369,7 +394,22 @@ Page({
    */
   onShow() {
     this.onLoad();//刷新页面
-
+    //监听键盘是否弹起
+    wx.onKeyboardHeightChange(res =>{
+      if(!this.data.showEmoji){//切换表情包时，表情包弹窗高度等于键盘弹起高度
+        if(res.height>0){
+          var window = wx.getWindowInfo();
+          var height = window.windowHeight - window.safeArea.top;
+          this.setData({
+            keywordHeight:height
+          })
+        }else{
+          this.setData({
+            keywordHeight:0
+          })
+        }
+      }
+    })
   },
 
   /**

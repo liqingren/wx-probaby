@@ -129,7 +129,7 @@ Page({
       const {code,data,msg} = value;
       if(code == 200){
         if(data.babyBirth != null){
-          data.age = data[i].age = getAge(baby.babyBirth,data[i].uploadTime);
+          data.age = getAge(data.babyBirth,new Date());
         }else{
           data.age = null
         }

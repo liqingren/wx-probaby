@@ -183,11 +183,13 @@
     <view class="keyword_screen" bindtap="hideKeyword"></view>
     <!-- 输入框 -->
     <view class="keyword-item">
-      <textarea class="textarea" placeholder="{{placeholder}}" focus="{{responseFocus}}"   bindinput="responseInput" value="{{inputValue}}"/>
+      <textarea class="textarea" placeholder="{{placeholder}}" focus="{{responseFocus}}"   bindinput="responseInput" adjust-position="false" bindblur="bindCursorChange" value="{{discuss.content}}"/>
     </view>
     <!-- 表情包 -->
     <view class="keyword-item-img" bindtap="clickShowEmoji">
-      <image src="../trends/images/emji.jpg"/>
+      <image wx:if="{{!showEmoji}}" class="emoji" src="../trends/images/emji.jpg"/>
+      <image wx:if="{{showEmoji}}" class="emoji" src="../trends/images/keyword.jpg"/>
+      <!-- <image src="../trends/images/emji.jpg"/> -->
     </view>
     <!-- 发送按钮 -->
     <view class="res-btn" bindtap="saveResponse">发送</view>
