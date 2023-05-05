@@ -245,13 +245,14 @@ page{
   position: relative;
   z-index:2000;
   width:10%;
+  height:100rpx;
   text-align: center;
   margin-left:25rpx;
   margin-top:10rpx;
 }
 .keyword-item-img image{
-  width:60rpx;
-  height:60rpx;
+  width:70rpx;
+  height:70rpx;
 }
 .keyword .res-btn{
   width:20%;

@@ -19,7 +19,8 @@ Page({
       content:''
     },//增加评论
     cursor:0,//textarea光标位置
-    responseFocus:false,//回复焦点
+    responseShow:false,//回复焦点
+    textareaFocus:true,//textarea输入框焦点
     show:false,//是否显示剩下的内容
     relativeCount:'',//亲友数量
     showEmoji:false,//表情包页面的显示与隐藏
@@ -219,9 +220,9 @@ Page({
     */
   onCommentTrend:function(e){
     this.setData({
-      responseFocus:!this.data.responseFocus, 
+      responseShow:!this.data.responseShow, 
     })
-    if(this.data.responseFocus){//显示评论框
+    if(this.data.responseShow){//显示评论框
       var index = e.currentTarget.dataset.index;
       var trend = this.data.trends[index];
       var user = wx.getStorageSync('user');
@@ -257,7 +258,7 @@ Page({
     var user = wx.getStorageSync('user');
     this.setData({
       placeholder:'回复 '+discuss.identity,
-      responseFocus:true,
+      responseShow:true,
       'discuss.userId':user.userId,
       'discuss.trendId':trend.trendId,
       'discuss.parentId':discuss.discussId,
@@ -281,7 +282,6 @@ Page({
       this.setData({
         'discuss.content':prevStr+emoji.emoji+nextStr,
       })
-      // console.log("光标前半部分："+prevStr+"，光标后半部分："+nextStr)
     }else{
       this.setData({
         'discuss.content':cont+emoji.emoji,
@@ -336,7 +336,7 @@ Page({
       if(code == 200){
         this.onLoad();
         this.setData({
-          responseFocus:false,
+          responseShow:false,
           showEmoji:false,
           keywordHeight:0
         })
@@ -358,7 +358,7 @@ Page({
    */
   readyFocus:function(){
     this.setData({
-      responseFocus:true,
+      textareaFocus:true,
       showEmoji:false,
     })
   },
@@ -369,7 +369,7 @@ Page({
    */
   hideKeyword:function(){
     this.setData({
-      responseFocus:false,
+      responseShow:false,
       showEmoji:false,
     })
     wx.showTabBar();
@@ -384,7 +384,7 @@ Page({
     if(this.data.showEmoji){
       wx.hideTabBar();
       this.setData({
-        responseFocus:true,
+        textareaFocus:true,
         showEmoji:false
       })
     }else{
@@ -402,7 +402,7 @@ Page({
   hideEmoji:function(){
     this.setData({
       showEmoji:false,
-      responseFocus:false,
+      responseShow:false,
       keywordHeight:0,
     })
     wx.showTabBar();

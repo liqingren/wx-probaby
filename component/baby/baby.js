@@ -45,7 +45,6 @@ Component({
         this.setData({
           babies:list
         })
-        console.log(list)
       })
       this.hideModal();//隐藏操作框
       

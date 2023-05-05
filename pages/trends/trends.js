@@ -151,7 +151,6 @@ Page({
    * @param {*} e 
    */
   bindReply: function (e) {
-    console.log(e)
     this.setData({
       releaseFocus: true,
       placeholder:'说点什么，关爱一下',
@@ -199,7 +198,6 @@ Page({
       this.setData({
         'discuss.content':prevStr+emoji.emoji+nextStr,
       })
-      // console.log("光标前半部分："+prevStr+"，光标后半部分："+nextStr)
     }else{
       this.setData({
         'discuss.content':cont+emoji.emoji,
