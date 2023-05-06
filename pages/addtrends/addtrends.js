@@ -21,8 +21,8 @@ Page({
     },//动态
     images:[],//图片集合
     tags:[],//标签集合
-    uploadVedio:'',//是否显示增加视频的图标
-    uploadImg:'',//是否显示增加图片的图标
+    uploadVedio:true,//是否显示增加视频的图标
+    uploadImg:true,//是否显示增加图片的图标
     uploadCount:0,//上传视频的数量
     tagCount:0,//标签数量
     showTag:true,//是否显示增加标签的图标
@@ -71,7 +71,6 @@ Page({
       sourceType: ['album', 'camera'],
       mediaType:['video'],
       async success(res) {
-        // console.log("成功",res);
         const {type,tempFiles} = res;
         that.setData({
           type:type
@@ -86,10 +85,9 @@ Page({
         images.push(media2);
         that.setData({
           images:images,
-          uploadVedio:'none',
-          uploadImg:'none'
+          uploadVedio:false,
+          uploadImg:false
         });
-        // console.log(that.data.images);
        
       },
     })
@@ -107,7 +105,6 @@ Page({
         sourceType: ['album', 'camera'],
         mediaType:['image'],
         async success( res) {
-          // console.log("上传成功",res);
           const {type,tempFiles} = res;
           that.setData({
             type:type
@@ -120,12 +117,12 @@ Page({
           }
           if(images.length>=9){
             that.setData({
-              uploadImg:'none'
+              uploadImg:false
             })
           }
           that.setData({
             images:images,
-            uploadVedio:'none',
+            uploadVedio:false,
             uploadCount:images.length
           })
         },
@@ -133,6 +130,8 @@ Page({
           console.log(err);
         }
       })
+
+      
   },
 
    /**
@@ -145,7 +144,6 @@ Page({
         cloudPath:new Date().getTime()+suffix, // 上传至云端的路径
         filePath: fileURL, // 小程序临时文件路径
         success: res => {
-          // console.log("上传成功",res);
           if (res.statusCode === 204) {
             //200: 服务端业务处理正常结束
             resolve(res.fileID)
@@ -154,7 +152,7 @@ Page({
           }
         }
       })
-       //上传进度
+      // //上传进度
       uploadTask.onProgressUpdate((res) => {
         if(res.progress <100){
           wx.showLoading({
@@ -200,8 +198,8 @@ Page({
         if (res.confirm) {
           that.setData({
             images:[],
-            uploadVedio:'',
-            uploadImg:''
+            uploadVedio:true,
+            uploadImg:true
           })
         } else if (res.cancel) {
           return false;
@@ -227,11 +225,11 @@ Page({
           that.setData({
             images:images,
             uploadCount:that.data.uploadCount -1,
-            uploadImg:''
+            uploadImg:true
           })
           if(that.uploadCount <=0){
             that.setData({
-              uploadVedio:''
+              uploadVedio:true
             })
           }
         } else if (res.cancel) {
@@ -409,14 +407,14 @@ Page({
         this.setData({
           images:imgs,
           'trend.trendVideo':media,
-          uploadImg:'none',
-          uploadVedio:'none',
+          uploadImg:false,
+          uploadVedio:false,
         })
         
       }else if(options.type == 'image'){//上传的照片
         this.setData({
           images:imgs,
-          uploadVedio:'none',
+          uploadVedio:false,
           uploadCount:imgs.length
         })
         if(imgs.length>=9){

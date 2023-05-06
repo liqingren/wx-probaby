@@ -11,17 +11,18 @@
       <!-- 上传照片或视频 -->
     <view class="media">
       <view>
-        <image  bindtap="handleInsertVedio" src="../addtrends/image/vedio.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;display: {{uploadVedio}};"></image>
+        <!-- 上传视频图标 -->
+        <image wx:if="{{uploadVedio}}" bindtap="handleInsertVedio" src="../addtrends/image/vedio.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;"></image>
 
         <!-- 显示上传的视频 -->
-        
         <video src="{{images[0]}}" wx:if="{{type == 'video' && images.length>0}}" autoplay="true" capture-bind:longpress="deleteVideo"></video>
 
         <!-- 循环显示上传的图片 -->
         <image wx:if="{{type == 'image' && images.length>0}}" wx:for="{{images}}" wx:key="index" data-index="{{index}}" src="{{item}}" bindtap="clickImage" capture-bind:longpress="deleteImage">
         </image>
 
-        <image  bindtap="handleInsertImage" src="../addtrends/image/img.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;display: {{uploadImg}};"></image>
+        <!-- 上传照片图标 -->
+        <image wx:if="{{uploadImg}}" bindtap="handleInsertImage" src="../addtrends/image/img.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;"></image>
 
         
       </view>

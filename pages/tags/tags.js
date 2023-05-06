@@ -75,9 +75,13 @@ Page({
     postParamsRequest("/tag/save",{content:tag})
     .then((value) =>{
       const {data} = value;
-      if(data.content.length<=3){
+      if(data.content.length == 1){
+        data.width = data.content.length * 18 + '%';
+      }else if(data.content.length == 2){
         data.width = data.content.length * 11 + '%';
-      }else{
+      }else if(data.content.length>2 && data.content.length<=4){
+        data.width = data.content.length * 9 + '%';
+      }else {
         data.width = data.content.length * 7 + '%';
       }
       //将增加的标签数据传给动态页面中

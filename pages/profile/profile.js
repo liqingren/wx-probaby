@@ -198,8 +198,7 @@ Page({
       this.setData({
         user:userInfo,
         birth:userBirth,
-        index:Number(userInfo.userSex),
-        'upUser.userId':userInfo.userId
+        index:Number(userInfo.userSex)
       })
     }
     //获取所有的省市二级地区，并对当前用户的地区信息做处理（若没有地区，默认为省市的第一个，若有，则定位到当前的地区）
