@@ -10,7 +10,6 @@ Page({
   data: {
     babyId:null,//宝宝id
     recordList:[],//记录集合
-    birth:null,//生日
     winHeight:200,//记录总高度
     flag:false,//判断是否通过onShow()调用onLoad()刷新页面
 
@@ -64,29 +63,27 @@ Page({
    */
   onLoad(options) {
     var baby = wx.getStorageSync('baby');
-    //获取宝宝信息：id和生日（用户计算年龄）
+    //获取宝宝信息：id
     if(baby != null){
       this.setData({
-        babyId:baby.babyId,
-        birth:baby.babyBirth
+        babyId:baby.babyId
       })
     }
     //获取宝宝所有记录
     postParamsRequest('/record/listrecord',{babyId:this.data.babyId})
     .then((value) =>{
       const {code,data,msg} = value;
-      const list = data;
       //计算记录时宝宝的年龄,以及格式化日期
       for(var i=0;i<data.length;i++){
-        if(data[i].recordTime !== null){
-          list[i].age = getAge(this.data.birth,data[i].recordTime);
+        if(data[i].recordTime != null && baby.babyBirth != null){
+          data[i].age = getAge(baby.babyBirth,data[i].recordTime);
         }else{
-          list[i].age = '';
+          data[i].age = '';
         }
       }
       if(code == 200){
         this.setData({
-          recordList:list,
+          recordList:data,
           winHeight:this.data.winHeight + data.length*500
         })
       }else{

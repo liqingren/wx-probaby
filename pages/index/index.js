@@ -18,12 +18,13 @@ Page({
     discuss:{
       content:''
     },//增加评论
-    responseFocus:false,//回复焦点
+    cursor:0,//textarea光标位置
+    responseShow:false,//回复焦点
+    textareaFocus:true,//textarea输入框焦点
     show:false,//是否显示剩下的内容
     relativeCount:'',//亲友数量
     showEmoji:false,//表情包页面的显示与隐藏
     keywordHeight:0,//键盘高度
-    inputValue:'',//textarea输入框内容
     placeholder:'说点什么，关爱一下',//评论输入框的placeholder
     flag:false,//判断是否通过onShow()调用onLoad()刷新页面
   },
@@ -219,11 +220,9 @@ Page({
     */
   onCommentTrend:function(e){
     this.setData({
-      responseFocus:!this.data.responseFocus,
-      
+      responseShow:!this.data.responseShow, 
     })
-    if(this.data.responseFocus){//显示评论框
-      wx.hideTabBar();//隐藏tabBar
+    if(this.data.responseShow){//显示评论框
       var index = e.currentTarget.dataset.index;
       var trend = this.data.trends[index];
       var user = wx.getStorageSync('user');
@@ -231,7 +230,6 @@ Page({
         discuss:{
           content:''
         },
-        inputValue:'',
         showEmoji:false,
         'discuss.userId':user.userId,
         'discuss.trendId':trend.trendId
@@ -253,7 +251,6 @@ Page({
       discuss:{
         content:''
       },
-      inputValue:''
     })
     var index = e.currentTarget.dataset.index;
     var trend = this.data.trends[index];
@@ -261,12 +258,47 @@ Page({
     var user = wx.getStorageSync('user');
     this.setData({
       placeholder:'回复 '+discuss.identity,
-      responseFocus:true,
+      responseShow:true,
       'discuss.userId':user.userId,
       'discuss.trendId':trend.trendId,
       'discuss.parentId':discuss.discussId,
       'discuss.repUserId':discuss.userId,
       'discuss.repIdentity':discuss.identity
+    })
+  },
+
+
+
+  /**
+   * 选择表情包（判断是在文字中间插入表情包还是在文字后面插入表情包）
+   */
+  clickChooseEmoji:function(e){
+    var emoji = e.detail;
+    var cont = this.data.discuss.content;//评论内容
+    var cursor = this.data.cursor;//光标位置
+    if(cont.length>0){
+      var prevStr = cont.substr(0,cursor);
+      var nextStr = cont.substr(cursor);
+      this.setData({
+        'discuss.content':prevStr+emoji.emoji+nextStr,
+      })
+    }else{
+      this.setData({
+        'discuss.content':cont+emoji.emoji,
+      })
+    }
+    this.setData({
+      cursor:cursor+emoji.emoji.length
+    })
+  },
+
+  /**
+   * 失去焦点时获取光标位置
+   * @param {*} e 
+   */
+  bindCursorChange:function(e){
+    this.setData({
+      cursor:e.detail.cursor
     })
   },
 
@@ -278,7 +310,6 @@ Page({
     if(e.detail.value != ''){
       this.setData({
         'discuss.content':e.detail.value,
-        inputValue:e.detail.value
       })
     }
   },
@@ -305,9 +336,8 @@ Page({
       if(code == 200){
         this.onLoad();
         this.setData({
-          responseFocus:false,
+          responseShow:false,
           showEmoji:false,
-          inputValue:'',
           keywordHeight:0
         })
         wx.showTabBar();//显示tabBar导航
@@ -328,7 +358,7 @@ Page({
    */
   readyFocus:function(){
     this.setData({
-      responseFocus:true,
+      textareaFocus:true,
       showEmoji:false,
     })
   },
@@ -339,7 +369,7 @@ Page({
    */
   hideKeyword:function(){
     this.setData({
-      responseFocus:false,
+      responseShow:false,
       showEmoji:false,
     })
     wx.showTabBar();
@@ -350,16 +380,17 @@ Page({
    */
   clickShowEmoji:function(e){
     var window = wx.getWindowInfo();
-    var height = window.windowHeight - window.safeArea.top;
-    this.setData({
-      showEmoji:true,
-      keywordHeight:height
-    })
+    var height = window.windowHeight;
     if(this.data.showEmoji){
       wx.hideTabBar();
+      this.setData({
+        textareaFocus:true,
+        showEmoji:false
+      })
     }else{
       this.setData({
-        keywordHeight:0
+        showEmoji:true,
+        keywordHeight:height
       })
     }
     
@@ -371,22 +402,10 @@ Page({
   hideEmoji:function(){
     this.setData({
       showEmoji:false,
-      responseFocus:false,
+      responseShow:false,
       keywordHeight:0,
     })
     wx.showTabBar();
-  },
-
-  /**
-   * 选择表情包
-   * @param {*} e 
-   */
-  clickChooseEmoji:function(e){
-    var cont = this.data.discuss.content;
-    this.setData({
-      'discuss.content':cont+e.detail.emoji,
-      inputValue:cont+e.detail.emoji,
-    })
   },
 
 
@@ -578,11 +597,9 @@ Page({
     wx.onKeyboardHeightChange(res =>{
       if(!this.data.showEmoji){//切换表情包时，表情包弹窗高度等于键盘弹起高度
         if(res.height>0){
-          var window = wx.getWindowInfo();
-          //底部tabBar高度
-          var tabBarHeight = window.screenHeight - window.statusBarHeight - window.windowHeight - 42;
+          wx.hideTabBar();//隐藏tabBar
           this.setData({
-            keywordHeight:(res.height - tabBarHeight) * 750 / wx.getWindowInfo().windowWidth
+            keywordHeight:res.height * 750 / wx.getWindowInfo().windowWidth
           })
         }else{
           wx.showTabBar()

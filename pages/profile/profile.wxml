@@ -62,7 +62,7 @@
   </view>
 
 
-  <!-- 地区 -->
+  <!-- 地区：多列选择器 -->
   <view class="info">
     <picker mode="multiSelector" bindchange="multiPickerChange" bindcancel="multPickerCancelChange" bindcolumnchange="multiPickerColumnChange" value="{{multIndex}}" range="{{multRegion}}">
       <text>地区</text>

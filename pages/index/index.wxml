@@ -178,16 +178,17 @@
 
 
   <!-- 点击评论弹出键盘  -->
-  <view class="keyword" wx:if="{{responseFocus}}" style="margin-bottom: {{keywordHeight}}rpx;">
+  <view class="keyword" wx:if="{{responseShow}}" style="margin-bottom: {{keywordHeight}}rpx;">
     <!-- 点击评论区界面可隐藏 -->
     <view class="keyword_screen" bindtap="hideKeyword"></view>
     <!-- 输入框 -->
     <view class="keyword-item">
-      <textarea class="textarea" placeholder="{{placeholder}}" focus="{{responseFocus}}"   bindinput="responseInput" value="{{inputValue}}"/>
+      <textarea class="textarea" placeholder="{{placeholder}}" focus="{{textareaFocus}}"   bindinput="responseInput" adjust-position="false" bindblur="bindCursorChange" value="{{discuss.content}}"/>
     </view>
     <!-- 表情包 -->
     <view class="keyword-item-img" bindtap="clickShowEmoji">
-      <image src="../trends/images/emji.jpg"/>
+      <image wx:if="{{!showEmoji}}" class="emoji" src="../trends/images/emji.jpg"/>
+      <image wx:if="{{showEmoji}}" class="emoji" src="../trends/images/keyword.jpg"/>
     </view>
     <!-- 发送按钮 -->
     <view class="res-btn" bindtap="saveResponse">发送</view>

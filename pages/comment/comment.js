@@ -8,14 +8,12 @@ Page({
    */
   data: {
     placeholder:'我也说一句',//textarea的placeholder
-    trendId:null,//动态id
-    image:null,//评论图片
+    // trendId:null,//动态id
     comment:{
       content:''
     },//评论对象
-    content:'',//评论内容
+    cursor:0,//输入框光标位置
     releaseFocus:true,//textarea焦点
-    marginBottom:0,//底部操作栏距离底部高度
     showEmoji:false,//表情包页面的状态
     keywordHeight:0,//键盘高度
   },
@@ -58,13 +56,36 @@ Page({
 
 
   /**
-   * 选择表情包
+   * 选择表情包（判断是在文字中间插入表情包还是在文字后面插入表情包）
    */
   clickChooseEmoji:function(e){
     var emoji = e.detail;
-    var cont = this.data.comment.content;
+    var cont = this.data.comment.content;//评论内容
+    var cursor = this.data.cursor;//光标位置
+    if(cont.length>0){
+      var prevStr = cont.substr(0,cursor);
+      var nextStr = cont.substr(cursor);
+      this.setData({
+        'comment.content':prevStr+emoji.emoji+nextStr,
+      })
+      // console.log("光标前半部分："+prevStr+"，光标后半部分："+nextStr)
+    }else{
+      this.setData({
+        'comment.content':cont+emoji.emoji,
+      })
+    }
     this.setData({
-      'comment.content':cont+emoji.emoji,
+      cursor:cursor+emoji.emoji.length
+    })
+  },
+
+  /**
+   * 失去焦点时获取光标位置
+   * @param {*} e 
+   */
+  bindCursorChange:function(e){
+    this.setData({
+      cursor:e.detail.cursor
     })
   },
 

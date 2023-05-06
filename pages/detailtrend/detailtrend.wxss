@@ -78,7 +78,7 @@ page{
 .comment-release{
   height:90rpx;
   position: fixed;
-  bottom: 0;
+  bottom: 20rpx;
   left:0;
   display: flex;
   flex-direction: row;

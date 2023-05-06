@@ -1,5 +1,6 @@
 <!--pages/edittrend/edittrend.wxml-->
-<view class="insert-trends">
+<!-- 编辑动态 -->
+<view class="edit-trends">
   <!-- 动态内容 -->
   <view class="content">
     <editor class="editor" id="editor" placeholder="宝宝在笑、在跑...还是发呆中？" bindinput="changeContent" bindready="onEditorReady" style="height:auto;"></editor>
@@ -13,8 +14,6 @@
         <!-- 点击上传视频 -->
         <image wx:if="{{uploadVedio}}"  bindtap="handleInsertVedio" src="../addtrends/image/vedio.png" style="width:170rpx;height:160rpx;border:5rpx dashed #d7d7d7;"></image>
 
-        
-        
         <!-- 显示上传的视频 -->
         <video src="{{trend.trendVideo}}" wx:if="{{trend.trendVideo != null && trend.trendVideo != ''}}" autoplay="true" capture-bind:longpress="deleteVideo"></video>
 

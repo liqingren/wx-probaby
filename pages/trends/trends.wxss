@@ -53,16 +53,7 @@ page{
   margin-right:10rpx;
   margin-top:13rpx;
 }
-/* 表情包 */
-.emoji_screen{
-  width: 100%;
-  height: 46%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: 10;
-}
+
 /*整体样式，就是黑色的容器*/
 .comment{
   display: flex;
@@ -73,7 +64,7 @@ page{
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 8px 0 8px 13px;
+  padding: 5rpx 0 40rpx 20rpx;
   background-color: #ffffff;
   font-size: 14px;
   z-index: 2000;
@@ -111,6 +102,16 @@ background-color: #4B5CD7;
 .emoji{
   width: 50rpx;
   height: 50rpx;
+}
+/* 表情包 */
+.emoji_screen{
+  width: 100%;
+  height: 45%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 10;
 }
 /*发送按钮*/
 .comment .submit{ 

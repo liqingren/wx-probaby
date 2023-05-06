@@ -1,4 +1,4 @@
-<!-- 亲友的评论 -->
+<!-- trends页面：亲友的评论 -->
 <view class="discuss-content">
   <view wx:for="{{discussArr}}" wx:key="index">
     <view class="discuss" data-index="{{index}}" data-item="{{item}}" style="margin-bottom: 10rpx;">

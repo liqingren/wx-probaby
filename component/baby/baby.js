@@ -9,6 +9,7 @@ Component({
     showMiniStatus:null,//是否显示操作框
     index:null,//宝宝下标
     animationData:'',//动画实例
+    state:'刚出生',//年龄状态
 
   },
   properties:{
@@ -46,6 +47,7 @@ Component({
         })
       })
       this.hideModal();//隐藏操作框
+      
     },
 
 

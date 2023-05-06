@@ -51,7 +51,7 @@
 }
 .info text{
   position: relative;
-  top:-220rpx;
+  top:-210rpx;
   left:23%;
   font-size: 38rpx;
   color:#aeaeae;
