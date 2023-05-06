@@ -350,8 +350,10 @@ Page({
       .then((value) =>{
         const {data} = value;
         var baby = wx.getStorageSync('baby');
-        if(baby != null){//获取宝宝年龄
-          data.age = baby.age;
+        if(baby != null && baby.babyBirth != null){//获取宝宝年龄
+          data.age = getAge(baby.babyBirth,data.uploadTime);
+        }else{
+          data.age = '';
         }
          //对图片做处理
          if(data.trendPhoto != null){
@@ -374,7 +376,6 @@ Page({
           trend:data,
           tags:data.tags
         })
-        // console.log(data);
       })
     }
 
