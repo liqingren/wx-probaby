@@ -68,7 +68,6 @@ Page({
       this.setData({
         'comment.content':prevStr+emoji.emoji+nextStr,
       })
-      // console.log("光标前半部分："+prevStr+"，光标后半部分："+nextStr)
     }else{
       this.setData({
         'comment.content':cont+emoji.emoji,
@@ -115,7 +114,6 @@ Page({
       sourceType: ['album', 'camera'],
       mediaType:['image'],
       async success(res) {
-        // console.log("成功",res);
         const {tempFiles} = res;
         var file = tempFiles[0].tempFilePath;//图片url
         var suffix = file.substr(file.indexOf("."));//图片后缀名
