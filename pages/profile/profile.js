@@ -135,7 +135,6 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
-        // console.log("成功",res);
         that.uploadImage(res.tempFiles[0].tempFilePath);
       },
     })
@@ -150,8 +149,6 @@ Page({
       cloudPath:new Date().getTime()+'.png', // 上传至云端的路径
       filePath: fileURL, // 小程序临时文件路径
       success: res => {
-        // 返回文件 ID
-        // console.log("上传成功",res)
         //获取文件路径
         this.setData({
           'user.userPhoto':res.fileID
