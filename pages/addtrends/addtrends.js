@@ -3,7 +3,6 @@ const { formatDate } = require("../../utils/util");
 
 // pages/addtrends/addtrends.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -27,9 +26,7 @@ Page({
     tagCount:0,//标签数量
     showTag:true,//是否显示增加标签的图标
     type:null,//上传媒体的类型：图片，视频
-
   },
-
   /**
    * 初始化编辑器
    */
@@ -44,8 +41,6 @@ Page({
       })
       .exec();
   },
-
-  
   /**
    * 内容输入框
    * @param {*} e 
@@ -56,9 +51,6 @@ Page({
       'trend.content':cont
     })
   },
-
-
-
   /**
    * 上传视频（只能上传一个）
    */
@@ -87,12 +79,10 @@ Page({
           images:images,
           uploadVedio:false,
           uploadImg:false
-        });
-       
+        });  
       },
     })
   },
-
   /**
    * 上传多张图片（最多可上传九张）
    */
@@ -130,10 +120,7 @@ Page({
           console.log(err);
         }
       })
-
-      
   },
-
    /**
    * 上传到云端
    * @param {*} fileURL 
@@ -165,8 +152,6 @@ Page({
       })
     })
   },
-
-
   /**
    * 点击图片放大预览
    * @param {*} e 
@@ -182,9 +167,7 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
-  
   },
-
   /**
    * 长按删除视频
    * @param {*} e 
@@ -207,7 +190,6 @@ Page({
       }
     })
   },
-
   /**
    * 长按图片删除
    * @param {*} e 
@@ -238,7 +220,6 @@ Page({
       }
     })
   },
-
   /**
    * 添加标签
    */
@@ -247,7 +228,6 @@ Page({
       url: '../tags/tags',
     })
   },
-
   /**
    * 删除标签
    * @param {*} e 
@@ -268,7 +248,6 @@ Page({
       })
     }
   },
-
   /**
    * 权限选择器
    * @param {*} e 
@@ -279,7 +258,6 @@ Page({
       'trend.level':parseInt(e.detail.value)
     })
   },
-
   /**
    * 时间选择器
    */
@@ -288,7 +266,6 @@ Page({
       'trend.uploadTime':formatDate(e.detail.value)
     })
   },
-
   /**
    * 取消上传动态
    */
@@ -297,7 +274,6 @@ Page({
       delta: 1,
     })
   },
-
   /**
    * 保存动态
    */
@@ -375,12 +351,7 @@ Page({
         }
       })
     } 
-    
-    
   },
-
-  
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -393,7 +364,6 @@ Page({
         type:options.type
       })
     }
-    
     if(images != null && images != ''){
       var imgs = [];
       var media = '';
@@ -409,8 +379,7 @@ Page({
           'trend.trendVideo':media,
           uploadImg:false,
           uploadVedio:false,
-        })
-        
+        })  
       }else if(options.type == 'image'){//上传的照片
         this.setData({
           images:imgs,
@@ -435,9 +404,7 @@ Page({
         tags:tags,
         tagCount:tags.length,
       })
-      // console.log(tags);
     }
-  
     var user = wx.getStorageSync('user');
     this.setData({
       'trend.userId':user.userId,
@@ -445,7 +412,6 @@ Page({
       'trend.uploadTime':formatDate(new Date()),
       'trend.level':this.data.index
     })
-    
     //获取权限（所有人或仅自己）
     postParamsRequest("/trend/getlevel")
     .then((value) =>{
@@ -455,7 +421,6 @@ Page({
       })
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -308,7 +308,7 @@ page{
 /* 表情包 */
 .emoji_screen{
   width: 100%;
-  height: 46%;
+  height: 40%;
   position: fixed;
   top: 0;
   left: 0;

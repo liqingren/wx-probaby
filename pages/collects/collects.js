@@ -1,16 +1,13 @@
 // pages/collects/collects.js
 const {postParamsRequest} = require("../../utils/request")
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     trends:[],//收藏的动态
     flag:false,//判断通过onLoad()刷新还是onShow()刷新
-
   },
-
     /**
    * 点击进入详情
    * @param {*} e 
@@ -22,7 +19,6 @@ Page({
       url: '../detailtrend/detailtrend?trendId='+trendId + '&followed='+followed,
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -60,7 +56,6 @@ Page({
             } 
           }
         }
-        
         //判断是否收藏
         var collects = data[i].collects;
         if(collects.length<=0){
@@ -73,7 +68,6 @@ Page({
             }
           }
         }
-
         //判断是否点赞
         var likes = data[i].likes;
         if(likes.length<=0){
@@ -86,7 +80,6 @@ Page({
             }
           }
         }       
-
          //评论数量
         var comments = data[i].comments;
         if(comments.length>0){
@@ -95,11 +88,9 @@ Page({
           data[i].commentCount = 0;
         }
       }
-     
       this.setData({
         trends:data
       })
-      // console.log(data)
     })
   },
 

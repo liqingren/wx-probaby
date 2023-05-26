@@ -1,5 +1,5 @@
 var tokenKey = "token";
-var serverUrl =  "http://192.168.43.113:8088/javaprobaby"; 
+var serverUrl =  "http://192.168.1.101:8088/javaprobaby"; 
 // 例外不用token的地址
 var exceptionAddrArr = [  '/user/minilogin','/user/phonelogin','/user/register'];
  
