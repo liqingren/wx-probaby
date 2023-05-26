@@ -2,7 +2,6 @@
 import {postRequest} from '../../utils/request'
 import {getAge} from '../../utils/util'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -27,7 +26,6 @@ Page({
       {relative:"其他",checked:false}
     ]
   },
-
   /**
    * 宝宝性别
    * @param {*} options 
@@ -52,8 +50,6 @@ Page({
       sexList: list
     });
   },
-
-
    /**
    * 日期选择器
    * @param {*} e 
@@ -64,7 +60,6 @@ Page({
       birth:e.detail.value
     })
   },
-
   /**
    * 宝宝小名
    * @param {*} e 
@@ -77,7 +72,6 @@ Page({
       })
     }
   },
-
    /**
    * 身份选择切换 
    */
@@ -107,7 +101,6 @@ Page({
       relativeList: list
     });
   },
-
   /**
    * 保存
    */
@@ -143,7 +136,6 @@ Page({
             }
           }
         })
-        
       }else{
         wx.showToast({
           title: msg,
@@ -152,7 +144,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

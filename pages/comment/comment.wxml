@@ -9,7 +9,7 @@
   <!-- 表情包和照片-->
   <view class="other" style="margin-bottom: {{keywordHeight}}rpx;">
     <!-- 点击非操作框界面可隐藏 -->
-    <view class="other_screen" bindtap="hideOther"></view>
+    <view class="other_screen"></view>
     <view bindtap="clickShowEmoji" style="position: relative;z-index: 2000;">
       <image wx:if="{{!showEmoji}}" class="emoji" src="../trends/images/emji.jpg"/>
       <image wx:if="{{showEmoji}}" class="emoji" src="../trends/images/keyword.jpg"/>

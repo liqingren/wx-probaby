@@ -10,10 +10,6 @@ Component({
     index:null,//宝宝下标
     animationData:'',//动画实例
     state:'刚出生',//年龄状态
-
-  },
-  properties:{
-    
   },
   lifetimes:{
     //生命周期函数-监听页面加载
@@ -21,7 +17,6 @@ Component({
       this.init();//初始化
     }
   },
-
   methods:{
     /**
      * 初始化数据
@@ -39,7 +34,6 @@ Component({
           }else{
             list[i].age = '';
           }
-          
         }
         //更新宝宝集合中的信息
         this.setData({
@@ -47,10 +41,7 @@ Component({
         })
       })
       this.hideModal();//隐藏操作框
-      
     },
-
-
     /**
      * 跳转到添加宝宝
      */
@@ -59,7 +50,6 @@ Component({
         url: '../addbaby/addbaby',
       })
     },
-
     /**
      * 扫描邀请二维码
      */
@@ -73,7 +63,6 @@ Component({
         }
       })
     },
-
     /**
      * 选择宝宝之后显示主页信息
      */
@@ -83,8 +72,6 @@ Component({
       wx.setStorageSync('baby',baby);
       this.triggerEvent("clickEvent",true);
     },
-
-
     /**
      * 长按显示操作框
      * @param {*} e 
@@ -96,7 +83,6 @@ Component({
       })
       this.showModal();
     },
-    
     /**
      * 显示操作框
      **/
@@ -117,8 +103,6 @@ Component({
         animationData: animation.export()
       })
     },
-
-    
     /**
      * 隐藏操作框
      */
@@ -139,8 +123,6 @@ Component({
         showMiniStatus: false
       })
     },
-
-
     /**
      * 跳转到宝宝信息页面
      * @param {*} e 
@@ -151,8 +133,6 @@ Component({
         url: '../babyinfo/babyinfo?babyId='+baby.babyId,
       })
     },
-
-
     /**
      * 删除宝宝
      */
@@ -204,7 +184,6 @@ Component({
           }
         })
       }
-      
     },
   }
 })
